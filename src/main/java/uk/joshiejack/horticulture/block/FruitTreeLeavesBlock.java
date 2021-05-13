@@ -3,6 +3,8 @@ package uk.joshiejack.horticulture.block;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityType;
+import net.minecraft.state.BooleanProperty;
+import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -16,6 +18,7 @@ import java.util.Random;
 
 @SuppressWarnings("WeakerAccess")
 public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
+    public static final BooleanProperty IN_SEASON = BooleanProperty.create("in_season");
     private final AbstractBlock.IExtendedPositionPredicate<RegistryObject<Block>> predicate;
     private final RegistryObject<Block> block;
 
@@ -23,14 +26,15 @@ public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
         super(AbstractBlock.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS)
                 .noOcclusion().isValidSpawn(FruitTreeLeavesBlock::ocelotOrParrot)
                 .isSuffocating(FruitTreeLeavesBlock::never).isViewBlocking(FruitTreeLeavesBlock::never));
+        this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, 7).setValue(PERSISTENT, Boolean.FALSE).setValue(IN_SEASON, Boolean.TRUE));
         this.block = fruit;
         this.predicate = function;
     }
 
     @Override
-    public void randomTick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos pos, @Nonnull Random rand)  {
+    public void randomTick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos pos, @Nonnull Random rand) {
         super.randomTick(state, world, pos, rand);
-        if (HorticultureConfig.leavesGenerateFruit && world.random.nextDouble() <= HorticultureConfig.fruitGrowthChance) {
+        if (HorticultureConfig.leavesGenerateFruit && world.random.nextDouble() <= HorticultureConfig.fruitGrowthChance && state.getValue(IN_SEASON)) {
             performBonemeal(world, rand, pos, state);
         }
     }
@@ -59,5 +63,10 @@ public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
 
     private static boolean never(BlockState state, IBlockReader reader, BlockPos pos) {
         return false;
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+        builder.add(DISTANCE, PERSISTENT, IN_SEASON);
     }
 }

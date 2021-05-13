@@ -11,6 +11,7 @@ import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import uk.joshiejack.horticulture.Horticulture;
 import uk.joshiejack.horticulture.block.FruitBlock;
+import uk.joshiejack.horticulture.block.FruitTreeLeavesBlock;
 import uk.joshiejack.horticulture.block.HorticultureBlocks;
 
 public class HorticultureBlockStates extends BlockStateProvider {
@@ -52,6 +53,24 @@ public class HorticultureBlockStates extends BlockStateProvider {
         mushroomLogs(HorticultureBlocks.DARK_OAK_STUMP.get());
         mushroomLogs(HorticultureBlocks.CRIMSON_STUMP.get());
         mushroomLogs(HorticultureBlocks.WARPED_STUMP.get());
+        leaves(HorticultureBlocks.PEACH_LEAVES.get());
+        leaves(HorticultureBlocks.ORANGE_LEAVES.get());
+        leaves(HorticultureBlocks.APPLE_LEAVES.get());
+        leaves(HorticultureBlocks.BANANA_LEAVES.get());
+        //models().createTrivialBlock(Blocks.BIRCH_LEAVES, TexturedModel.LEAVES);
+    }
+
+    protected void leaves(Block block) {
+        getMultipartBuilder(block)
+                .part().modelFile(itemModels().getExistingFile(new ResourceLocation("minecraft", "oak_leaves"))).addModel().end()
+                .part().modelFile(models()
+                .cubeAll(block.getRegistryName().getPath(), new ResourceLocation(block.getRegistryName().getNamespace(),
+                        "block/leaves/" + block.getRegistryName().getPath().replace("_leaves", "")))).addModel().condition(FruitTreeLeavesBlock.IN_SEASON, true);
+        /*
+        getVariantBuilder(block);
+        ConfiguredModel.builder().modelFile(models()
+                .cubeAll(block.getRegistryName().getPath(), new ResourceLocation(block.getRegistryName().getNamespace(),
+                        "block/leaves/" + block.getRegistryName().getPath().replace("_leaves", "")))).build();*/
     }
 
     protected void mushroomLogs(Block block) {

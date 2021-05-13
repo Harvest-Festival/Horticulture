@@ -1,7 +1,6 @@
 package uk.joshiejack.horticulture.network;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
@@ -20,10 +19,9 @@ public class StumpUpdatePacket extends PenguinPacket {
     private int stage;
 
     public StumpUpdatePacket() {}
-    public StumpUpdatePacket(BlockPos pos, ItemStack stack, int stage) {
+    public StumpUpdatePacket(BlockPos pos, ItemStack stack) {
         this.pos = pos;
         this.item = stack.getItem();
-        this.stage = stage;
     }
 
     @Override
@@ -44,6 +42,6 @@ public class StumpUpdatePacket extends PenguinPacket {
     public void handle(PlayerEntity player) {
         TileEntity tile = player.level.getBlockEntity(pos);
         if (tile instanceof AbstractStumpTileEntity)
-            ((AbstractStumpTileEntity<?>)tile).setMushroomData(((BlockItem)item).getBlock().defaultBlockState(), stage);
+            ((AbstractStumpTileEntity<?>)tile).setMushroomData(item);
     }
 }

@@ -26,6 +26,10 @@ public abstract class AbstractStumpRecipe extends SimplePenguinRecipe {
         return growths;
     }
 
+    public BlockState getState() {
+        return blockstate;
+    }
+
     @Nonnull
     @Override
     public ItemStack getToastSymbol() {

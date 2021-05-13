@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -23,7 +24,7 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class StumpBlock extends AbstractPenguinBlock implements IGrowable {
-    public static final IntegerProperty AGE = CropBlock.AGE_4;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape BOUNDING_BOX = VoxelShapes.box(0.1D, 0.0D, 0.1D, 0.9D, 0.5D, 0.9D);
     private final Supplier<TileEntity> tile;
 
@@ -62,7 +63,7 @@ public class StumpBlock extends AbstractPenguinBlock implements IGrowable {
         TileEntity tile = world.getBlockEntity(pos);
         if (tile instanceof AbstractStumpTileEntity) {
             AbstractStumpTileEntity<?> stump = (AbstractStumpTileEntity<?>) tile;
-            if (!stump.getItem(0).isEmpty() && stump.getStage() < 4) {
+            if (!stump.getItem(0).isEmpty() && state.getValue(AGE) < 3) {
                 stump.grow();
             }
         }
@@ -80,17 +81,14 @@ public class StumpBlock extends AbstractPenguinBlock implements IGrowable {
     }
 
     @Override
-    public boolean isValidBonemealTarget(@Nonnull IBlockReader world, @Nonnull BlockPos pos, @Nonnull BlockState
-            state, boolean isClient) {
+    public boolean isValidBonemealTarget(@Nonnull IBlockReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, boolean isClient) {
         TileEntity tile = world.getBlockEntity(pos);
-        return tile instanceof AbstractStumpTileEntity && ((AbstractStumpTileEntity<?>) tile).getStage() < 4;
+        return tile instanceof AbstractStumpTileEntity<?> && !((AbstractStumpTileEntity<?>) tile).getItem(0).isEmpty() && state.getValue(AGE) < 3;
     }
 
     @Override
-    public boolean isBonemealSuccess(@Nonnull World world, @Nonnull Random rand, @Nonnull BlockPos
-            pos, @Nonnull BlockState state) {
-        TileEntity tile = world.getBlockEntity(pos);
-        return tile instanceof AbstractStumpTileEntity && !((AbstractStumpTileEntity<?>) tile).getItem(0).isEmpty();
+    public boolean isBonemealSuccess(@Nonnull World world, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
+        return state.getValue(AGE) < 3;
     }
 
     @Override

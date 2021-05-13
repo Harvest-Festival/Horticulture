@@ -1,0 +1,17 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "minecraft:item/oak_leaves"
+      }
+    },
+    {
+      "when": {
+        "in_season": "true"
+      },
+      "apply": {
+        "model": "horticulture:block/apple_leaves"
+      }
+    }
+  ]
+}
