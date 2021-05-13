@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "horticulture:cabbage_seeds",
+    "horticulture:corn_seeds",
+    "horticulture:cucumber_seeds",
+    "horticulture:eggplant_seeds",
+    "horticulture:grape_starter",
+    "horticulture:green_pepper_seeds",
+    "horticulture:onion_seeds",
+    "horticulture:pineapple_seeds",
+    "horticulture:spinach_seeds",
+    "horticulture:strawberry_seeds",
+    "horticulture:tomato_seeds",
+    "horticulture:turnip_seeds"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "horticulture:nether_stump",
+  "ingredient": {
+    "item": "horticulture:crimson_fungus_spores"
+  },
+  "result": "minecraft:crimson_fungus",
+  "count": 1,
+  "max growths": 15
+}

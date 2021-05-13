@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="MIT"
+[[mods]]
+    modId="horticulture"
+    version="${mod_version}"
+    displayName="Horticulture"
+    authors="joshiejack"
+    description='''Booya'''
+[[dependencies.horticulture]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_range}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.horticulture]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_range}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.horticulture]]
+    modId="penguinlib"
+    mandatory=true
+    versionRange="${penguinlib_range}"
+    ordering="NONE"
+    side="BOTH"

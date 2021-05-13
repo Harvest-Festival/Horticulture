@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "horticulture:sweet_potato_seeds"
+    ]
+  },
+  "criteria": {
+    "has_sweet_potato": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "horticulture:sweet_potato"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "horticulture:sweet_potato_seeds"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sweet_potato",
+      "has_the_recipe"
+    ]
+  ]
+}

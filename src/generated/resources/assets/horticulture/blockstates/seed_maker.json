@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "horticulture:block/seed_maker"
+    },
+    "facing=south": {
+      "model": "horticulture:block/seed_maker"
+    },
+    "facing=west": {
+      "model": "horticulture:block/seed_maker"
+    },
+    "facing=east": {
+      "model": "horticulture:block/seed_maker"
+    }
+  }
+}

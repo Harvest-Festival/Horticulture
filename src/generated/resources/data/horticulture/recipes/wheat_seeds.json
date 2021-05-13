@@ -1,0 +1,8 @@
+{
+  "type": "horticulture:seed_maker",
+  "ingredient": {
+    "item": "minecraft:wheat"
+  },
+  "result": "minecraft:wheat_seeds",
+  "count": 1
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "horticulture:block/spinach_1"
+    },
+    "age=1": {
+      "model": "horticulture:block/spinach_2"
+    },
+    "age=2": {
+      "model": "horticulture:block/spinach_3"
+    }
+  }
+}

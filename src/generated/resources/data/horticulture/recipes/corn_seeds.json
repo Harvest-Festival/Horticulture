@@ -1,0 +1,8 @@
+{
+  "type": "horticulture:seed_maker",
+  "ingredient": {
+    "item": "horticulture:corn"
+  },
+  "result": "horticulture:corn_seeds",
+  "count": 1
+}

@@ -1,0 +1,8 @@
+{
+  "type": "horticulture:seed_maker",
+  "ingredient": {
+    "item": "horticulture:spinach"
+  },
+  "result": "horticulture:spinach_seeds",
+  "count": 1
+}

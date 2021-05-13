@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "horticulture:onion_seeds"
+    ]
+  },
+  "criteria": {
+    "has_onion": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "horticulture:onion"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "horticulture:onion_seeds"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_onion",
+      "has_the_recipe"
+    ]
+  ]
+}

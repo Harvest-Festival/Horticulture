@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "horticulture:brown_mushroom"
+    ]
+  },
+  "criteria": {
+    "has_stump": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "horticulture:stump"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "horticulture:brown_mushroom"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_stump",
+      "has_the_recipe"
+    ]
+  ]
+}

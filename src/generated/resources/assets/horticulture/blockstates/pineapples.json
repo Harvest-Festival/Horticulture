@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "horticulture:block/pineapples_1"
+    },
+    "age=1": {
+      "model": "horticulture:block/pineapples_2"
+    },
+    "age=2": {
+      "model": "horticulture:block/pineapples_3"
+    },
+    "age=3": {
+      "model": "horticulture:block/pineapples_4"
+    },
+    "age=4": {
+      "model": "horticulture:block/pineapples_5"
+    }
+  }
+}

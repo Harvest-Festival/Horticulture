@@ -1,0 +1,8 @@
+{
+  "type": "horticulture:seed_maker",
+  "ingredient": {
+    "item": "minecraft:warped_fungus"
+  },
+  "result": "horticulture:warped_fungus_spores",
+  "count": 1
+}

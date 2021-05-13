@@ -1,0 +1,8 @@
+{
+  "type": "horticulture:seed_maker",
+  "ingredient": {
+    "item": "horticulture:onion"
+  },
+  "result": "horticulture:onion_seeds",
+  "count": 1
+}

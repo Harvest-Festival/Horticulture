@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "horticulture:block/crops/spinach_1"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "horticulture:block/crops/apple_fruit_1"
+  }
+}

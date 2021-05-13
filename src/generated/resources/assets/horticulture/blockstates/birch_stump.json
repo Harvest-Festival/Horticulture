@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "horticulture:block/birch_stump"
+    },
+    "age=1": {
+      "model": "horticulture:block/birch_stump"
+    },
+    "age=2": {
+      "model": "horticulture:block/birch_stump"
+    },
+    "age=3": {
+      "model": "horticulture:block/birch_stump"
+    },
+    "age=4": {
+      "model": "horticulture:block/birch_stump"
+    }
+  }
+}

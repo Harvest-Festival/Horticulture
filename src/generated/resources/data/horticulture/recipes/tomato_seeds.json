@@ -1,0 +1,8 @@
+{
+  "type": "horticulture:seed_maker",
+  "ingredient": {
+    "item": "horticulture:tomato"
+  },
+  "result": "horticulture:tomato_seeds",
+  "count": 1
+}

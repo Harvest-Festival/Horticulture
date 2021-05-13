@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "horticulture:eggplant_seeds"
+    ]
+  },
+  "criteria": {
+    "has_eggplant": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "horticulture:eggplant"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "horticulture:eggplant_seeds"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_eggplant",
+      "has_the_recipe"
+    ]
+  ]
+}

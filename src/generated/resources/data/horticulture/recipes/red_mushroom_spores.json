@@ -1,0 +1,8 @@
+{
+  "type": "horticulture:seed_maker",
+  "ingredient": {
+    "item": "minecraft:red_mushroom"
+  },
+  "result": "horticulture:red_mushroom_spores",
+  "count": 1
+}

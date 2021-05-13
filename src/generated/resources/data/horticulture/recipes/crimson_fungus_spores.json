@@ -1,0 +1,8 @@
+{
+  "type": "horticulture:seed_maker",
+  "ingredient": {
+    "item": "minecraft:crimson_fungus"
+  },
+  "result": "horticulture:crimson_fungus_spores",
+  "count": 1
+}

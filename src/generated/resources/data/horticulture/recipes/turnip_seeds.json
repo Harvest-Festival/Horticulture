@@ -1,0 +1,8 @@
+{
+  "type": "horticulture:seed_maker",
+  "ingredient": {
+    "item": "horticulture:turnip"
+  },
+  "result": "horticulture:turnip_seeds",
+  "count": 1
+}

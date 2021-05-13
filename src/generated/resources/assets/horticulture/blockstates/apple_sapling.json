@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "horticulture:block/apple_sapling"
+    },
+    "stage=1": {
+      "model": "horticulture:block/apple_sapling"
+    }
+  }
+}

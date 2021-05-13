@@ -1,0 +1,9 @@
+{
+  "type": "horticulture:stump",
+  "ingredient": {
+    "item": "horticulture:red_mushroom_spores"
+  },
+  "result": "minecraft:red_mushroom",
+  "count": 1,
+  "max growths": 30
+}

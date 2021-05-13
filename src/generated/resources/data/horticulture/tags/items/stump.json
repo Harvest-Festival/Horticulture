@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "horticulture:oak_stump",
+    "horticulture:birch_stump",
+    "horticulture:spruce_stump",
+    "horticulture:jungle_stump",
+    "horticulture:acacia_stump",
+    "horticulture:dark_oak_stump"
+  ]
+}

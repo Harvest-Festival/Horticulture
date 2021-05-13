@@ -1,0 +1,8 @@
+{
+  "type": "horticulture:seed_maker",
+  "ingredient": {
+    "item": "minecraft:beetroot"
+  },
+  "result": "minecraft:beetroot_seeds",
+  "count": 1
+}

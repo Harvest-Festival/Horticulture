@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "horticulture:block/apple_fruit_1"
+    },
+    "age=1": {
+      "model": "horticulture:block/apple_fruit_2"
+    },
+    "age=2": {
+      "model": "horticulture:block/apple_fruit_3"
+    },
+    "age=3": {
+      "model": "horticulture:block/apple_fruit_4"
+    }
+  }
+}

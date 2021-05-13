@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "horticulture:block/onions_1"
+    },
+    "age=1": {
+      "model": "horticulture:block/onions_2"
+    },
+    "age=2": {
+      "model": "horticulture:block/onions_3"
+    }
+  }
+}
