@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/cabbage"
+    },
+    {
+      "item": "penguinlib:deep_bowl"
+    }
+  ],
+  "result": {
+    "item": "horticulture:stir_fry"
+  }
+}

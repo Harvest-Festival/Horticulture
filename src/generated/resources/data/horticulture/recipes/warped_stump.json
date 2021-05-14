@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M",
+    "L"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:warped_stem"
+    },
+    "L": {
+      "tag": "forge:fungus"
+    }
+  },
+  "result": {
+    "item": "horticulture:warped_stump"
+  }
+}

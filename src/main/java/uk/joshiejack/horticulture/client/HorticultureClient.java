@@ -160,8 +160,5 @@ public class HorticultureClient {
         replaceStumpModel(registry, HorticultureBlocks.DARK_OAK_STUMP.get());
         replaceStumpModel(registry, HorticultureBlocks.CRIMSON_STUMP.get());
         replaceStumpModel(registry, HorticultureBlocks.WARPED_STUMP.get());
-
-        for (ResourceLocation location : registry.keySet())
-            Horticulture.LOGGER.info("Model bake location: " + location);
     }
 }

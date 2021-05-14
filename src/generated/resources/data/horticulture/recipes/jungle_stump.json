@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M",
+    "L"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:jungle_log"
+    },
+    "L": {
+      "tag": "forge:mushrooms"
+    }
+  },
+  "result": {
+    "item": "horticulture:jungle_stump"
+  }
+}

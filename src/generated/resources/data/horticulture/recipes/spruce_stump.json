@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "M",
+    "L"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:spruce_log"
+    },
+    "L": {
+      "tag": "forge:mushrooms"
+    }
+  },
+  "result": {
+    "item": "horticulture:spruce_stump"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/sweet_potato"
+    },
+    {
+      "item": "penguinlib:deep_bowl"
+    }
+  ],
+  "result": {
+    "item": "horticulture:candied_potato"
+  }
+}

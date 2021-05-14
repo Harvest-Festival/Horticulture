@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/eggplant"
+    },
+    {
+      "item": "penguinlib:plate"
+    }
+  ],
+  "result": {
+    "item": "horticulture:happy_eggplant"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/corn"
+    },
+    {
+      "item": "penguinlib:plate"
+    }
+  ],
+  "result": {
+    "item": "horticulture:baked_corn"
+  }
+}

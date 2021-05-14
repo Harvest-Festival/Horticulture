@@ -1,14 +1,12 @@
 package uk.joshiejack.horticulture.item;
 
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.BlockNamedItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.UseAction;
+import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import uk.joshiejack.horticulture.Horticulture;
 import uk.joshiejack.horticulture.block.HorticultureBlocks;
+import uk.joshiejack.penguinlib.item.PenguinItems;
 import uk.joshiejack.penguinlib.item.base.PenguinItem;
 
 
@@ -56,26 +54,26 @@ public class HorticultureItems {
     public static final RegistryObject<Item> PEACH_SAPLING  = ITEMS.register("peach_sapling", () -> new BlockItem(HorticultureBlocks.PEACH_SAPLING.get(), new Item.Properties().tab(Horticulture.TAB)));
 
     //Food
-    public static final RegistryObject<Item> CORNFLAKES = ITEMS.register("cornflakes", () -> new Item(new Item.Properties().food(HorticultureFoods.CORNFLAKES).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> HAPPY_EGGPLANT = ITEMS.register("happy_eggplant", () -> new Item(new Item.Properties().food(HorticultureFoods.HAPPY_EGGPLANT).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> BAKED_CORN = ITEMS.register("baked_corn", () -> new Item(new Item.Properties().food(HorticultureFoods.BAKED_CORN).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> PICKLED_TURNIP = ITEMS.register("pickled_turnip", () -> new Item(new Item.Properties().food(HorticultureFoods.PICKLED_TURNIP).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> PICKLED_CUCUMBER = ITEMS.register("pickled_cucumber", () -> new Item(new Item.Properties().food(HorticultureFoods.PICKLED_CUCUMBER).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> SALAD = ITEMS.register("salad", () -> new Item(new Item.Properties().food(HorticultureFoods.SALAD).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> BOILED_SPINACH = ITEMS.register("boiled_spinach", () -> new Item(new Item.Properties().food(HorticultureFoods.BOILED_SPINACH).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> CANDIED_POTATO = ITEMS.register("candied_potato", () -> new Item(new Item.Properties().food(HorticultureFoods.CANDIED_POTATO).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> PUMPKIN_STEW = ITEMS.register("pumpkin_stew", () -> new Item(new Item.Properties().food(HorticultureFoods.PUMPKIN_STEW).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> STIR_FRY = ITEMS.register("stir_fry", () -> new Item(new Item.Properties().food(HorticultureFoods.STIR_FRY).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> CORNFLAKES = ITEMS.register("cornflakes", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.DEEP_BOWL.get())).food(HorticultureFoods.CORNFLAKES).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> HAPPY_EGGPLANT = ITEMS.register("happy_eggplant", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.PLATE.get())).food(HorticultureFoods.HAPPY_EGGPLANT).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> BAKED_CORN = ITEMS.register("baked_corn", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.PLATE.get())).food(HorticultureFoods.BAKED_CORN).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> PICKLED_TURNIP = ITEMS.register("pickled_turnip", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.PLATE.get())).food(HorticultureFoods.PICKLED_TURNIP).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> PICKLED_CUCUMBER = ITEMS.register("pickled_cucumber", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.PICKLING_JAR.get())).food(HorticultureFoods.PICKLED_CUCUMBER).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> SALAD = ITEMS.register("salad", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.DEEP_BOWL.get())).food(HorticultureFoods.SALAD).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> BOILED_SPINACH = ITEMS.register("boiled_spinach", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.DEEP_BOWL.get())).food(HorticultureFoods.BOILED_SPINACH).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> CANDIED_POTATO = ITEMS.register("candied_potato", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.DEEP_BOWL.get())).food(HorticultureFoods.CANDIED_POTATO).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> PUMPKIN_STEW = ITEMS.register("pumpkin_stew", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.DEEP_BOWL.get())).food(HorticultureFoods.PUMPKIN_STEW).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> STIR_FRY = ITEMS.register("stir_fry", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.PLATE.get())).food(HorticultureFoods.STIR_FRY).tab(Horticulture.TAB)));
 
     //Drinks
-    public static final RegistryObject<Item> PINEAPPLE_JUICE = ITEMS.register("pineapple_juice", () -> new PenguinItem(new PenguinItem.Properties().useAction(UseAction.DRINK).food(HorticultureFoods.PINEAPPLE_JUICE).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> TOMATO_JUICE = ITEMS.register("tomato_juice", () -> new PenguinItem(new PenguinItem.Properties().useAction(UseAction.DRINK).food(HorticultureFoods.TOMATO_JUICE).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> STRAWBERRY_MILK = ITEMS.register("strawberry_milk", () -> new PenguinItem(new PenguinItem.Properties().useAction(UseAction.DRINK).food(HorticultureFoods.STRAWBERRY_MILK).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> GRAPE_JUICE = ITEMS.register("grape_juice", () -> new PenguinItem(new PenguinItem.Properties().useAction(UseAction.DRINK).food(HorticultureFoods.GRAPE_JUICE).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> PEACH_JUICE = ITEMS.register("peach_juice", () -> new PenguinItem(new PenguinItem.Properties().useAction(UseAction.DRINK).food(HorticultureFoods.PEACH_JUICE).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> BANANA_JUICE = ITEMS.register("banana_juice", () -> new PenguinItem(new PenguinItem.Properties().useAction(UseAction.DRINK).food(HorticultureFoods.BANANA_JUICE).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> ORANGE_JUICE = ITEMS.register("orange_juice", () -> new PenguinItem(new PenguinItem.Properties().useAction(UseAction.DRINK).food(HorticultureFoods.ORANGE_JUICE).tab(Horticulture.TAB)));
-    public static final RegistryObject<Item> APPLE_JUICE = ITEMS.register("apple_juice", () -> new PenguinItem(new PenguinItem.Properties().useAction(UseAction.DRINK).food(HorticultureFoods.APPLE_JUICE).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> PINEAPPLE_JUICE = ITEMS.register("pineapple_juice", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.GLASS.get())).useAction(UseAction.DRINK).food(HorticultureFoods.PINEAPPLE_JUICE).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> TOMATO_JUICE = ITEMS.register("tomato_juice", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.GLASS.get())).useAction(UseAction.DRINK).food(HorticultureFoods.TOMATO_JUICE).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> STRAWBERRY_MILK = ITEMS.register("strawberry_milk", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.GLASS.get())).useAction(UseAction.DRINK).food(HorticultureFoods.STRAWBERRY_MILK).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> GRAPE_JUICE = ITEMS.register("grape_juice", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.GLASS.get())).useAction(UseAction.DRINK).food(HorticultureFoods.GRAPE_JUICE).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> PEACH_JUICE = ITEMS.register("peach_juice", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.GLASS.get())).useAction(UseAction.DRINK).food(HorticultureFoods.PEACH_JUICE).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> BANANA_JUICE = ITEMS.register("banana_juice", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.GLASS.get())).useAction(UseAction.DRINK).food(HorticultureFoods.BANANA_JUICE).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> ORANGE_JUICE = ITEMS.register("orange_juice", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.GLASS.get())).useAction(UseAction.DRINK).food(HorticultureFoods.ORANGE_JUICE).tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> APPLE_JUICE = ITEMS.register("apple_juice", () -> new PenguinItem(new PenguinItem.Properties().withContainer(() -> new ItemStack(PenguinItems.GLASS.get())).useAction(UseAction.DRINK).food(HorticultureFoods.APPLE_JUICE).tab(Horticulture.TAB)));
 
     //Blocks
     public static final RegistryObject<Item> BANANA_LEAVES = ITEMS.register("banana_leaves", () -> new BlockItem(HorticultureBlocks.BANANA_LEAVES.get(), new PenguinItem.Properties().tab(Horticulture.TAB)));

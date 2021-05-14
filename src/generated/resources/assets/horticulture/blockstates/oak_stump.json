@@ -11,9 +11,6 @@
     },
     "age=3": {
       "model": "horticulture:block/oak_stump"
-    },
-    "age=4": {
-      "model": "horticulture:block/oak_stump"
     }
   }
 }

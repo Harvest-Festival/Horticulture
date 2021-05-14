@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "horticulture:pineapple_juice"
+    ]
+  },
+  "criteria": {
+    "has_pineapple": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:crops/pineapple"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "horticulture:pineapple_juice"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pineapple",
+      "has_the_recipe"
+    ]
+  ]
+}

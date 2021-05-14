@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:crops/pineapple"
+    },
+    {
+      "item": "penguinlib:glass"
+    }
+  ],
+  "result": {
+    "item": "horticulture:grape_juice"
+  }
+}

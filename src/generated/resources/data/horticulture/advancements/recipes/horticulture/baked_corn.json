@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "horticulture:baked_corn"
+    ]
+  },
+  "criteria": {
+    "has_corn": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:crops/pumpkin"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "horticulture:baked_corn"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_corn",
+      "has_the_recipe"
+    ]
+  ]
+}
