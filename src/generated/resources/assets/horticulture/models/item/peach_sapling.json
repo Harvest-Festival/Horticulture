@@ -1,3 +1,6 @@
 {
-  "parent": "horticulture:block/peach_sapling"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "horticulture:block/saplings/peach"
+  }
 }

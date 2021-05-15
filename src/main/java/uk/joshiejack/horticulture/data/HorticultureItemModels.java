@@ -3,12 +3,10 @@ package uk.joshiejack.horticulture.data;
 import joptsimple.internal.Strings;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
 import uk.joshiejack.horticulture.Horticulture;
 import uk.joshiejack.horticulture.item.HorticultureItems;
 
@@ -19,10 +17,6 @@ public class HorticultureItemModels extends ItemModelProvider {
         super(generator, Horticulture.MODID, existingFileHelper);
     }
 
-    private void registerModels(DeferredRegister<Item> items) {
-
-    }
-
     @Override
     protected void registerModels() {
         HorticultureItems.ITEMS.getEntries().stream()
@@ -30,7 +24,9 @@ public class HorticultureItemModels extends ItemModelProvider {
                 .forEach(item -> {
                     String path = Objects.requireNonNull(item.getRegistryName()).getPath();
                     if (item instanceof BlockItem && !path.contains("seeds"))
-                        if (path.contains("fruit"))
+                        if (path.contains("sapling"))
+                            singleTexture(path, mcLoc("item/generated"), "layer0", modLoc("block/saplings/" + path.replace("_sapling", "")));
+                        else if (path.contains("fruit"))
                             singleTexture(path, mcLoc("item/generated"), "layer0", modLoc("block/crops/" + path + "_0"));
                         else
                             getBuilder(path).parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)));

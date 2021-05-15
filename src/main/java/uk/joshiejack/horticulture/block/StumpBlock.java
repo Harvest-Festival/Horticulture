@@ -16,13 +16,14 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.items.IItemHandler;
-import uk.joshiejack.horticulture.tile.AbstractStumpTileEntity;
+import uk.joshiejack.horticulture.tileentity.AbstractStumpTileEntity;
 import uk.joshiejack.penguinlib.block.base.AbstractPenguinBlock;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
 import java.util.function.Supplier;
 
+@SuppressWarnings("deprecation")
 public class StumpBlock extends AbstractPenguinBlock implements IGrowable {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape BOUNDING_BOX = VoxelShapes.box(0.1D, 0.0D, 0.1D, 0.9D, 0.5D, 0.9D);
@@ -34,6 +35,7 @@ public class StumpBlock extends AbstractPenguinBlock implements IGrowable {
         this.tile = tile;
     }
 
+    @SuppressWarnings("ConstantConditions")
     private static AbstractBlock.Properties copy(Block block) {
         return AbstractBlock.Properties.of(block.defaultBlockState().getMaterial(), block.defaultMaterialColor())
                 .strength(block.defaultBlockState().getDestroySpeed(null, null)).sound(block.defaultBlockState().getSoundType());
@@ -44,7 +46,6 @@ public class StumpBlock extends AbstractPenguinBlock implements IGrowable {
         builder.add(AGE);
     }
 
-    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull IBlockReader source, @Nonnull BlockPos pos, @Nonnull ISelectionContext ctx) {
@@ -57,7 +58,6 @@ public class StumpBlock extends AbstractPenguinBlock implements IGrowable {
         return tile.get();
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void tick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos pos, @Nonnull Random random) {
         TileEntity tile = world.getBlockEntity(pos);

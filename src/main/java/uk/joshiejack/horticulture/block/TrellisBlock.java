@@ -19,8 +19,8 @@ import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
+@SuppressWarnings("deprecation")
 public class TrellisBlock extends CropBlock {
     private static final VoxelShape COLLISION = VoxelShapes.box(0.2D, 0.0D, 0.2D, 0.8D, 1.5D, 0.8D);
     public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.NORTH, Direction.EAST);
@@ -30,7 +30,6 @@ public class TrellisBlock extends CropBlock {
         registerDefaultState(getStateDefinition().any().setValue(FACING, Direction.NORTH).setValue(getAgeProperty(), 0));
     }
 
-    @SuppressWarnings("deprecation")
     @Nonnull
     @Override
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull IBlockReader source, @Nonnull BlockPos pos, @Nonnull ISelectionContext ctx) {
@@ -38,8 +37,7 @@ public class TrellisBlock extends CropBlock {
     }
 
 
-    @SuppressWarnings("deprecation")
-    @Nullable
+    @Nonnull
     @Override
     public VoxelShape getCollisionShape(@Nonnull BlockState state, @Nonnull IBlockReader source, @Nonnull BlockPos pos, @Nonnull ISelectionContext ctx) {
         return COLLISION;
@@ -51,12 +49,15 @@ public class TrellisBlock extends CropBlock {
         return this.defaultBlockState().setValue(FACING, direction == Direction.EAST || direction == Direction.WEST ? Direction.EAST : Direction.NORTH);
     }
 
+    @Nonnull
     @Override
     public BlockState rotate(BlockState state, Rotation rotation) {
         Direction rotated = rotation.rotate(state.getValue(FACING));
         return state.setValue(FACING, rotated == Direction.EAST || rotated == Direction.WEST ? Direction.EAST : Direction.NORTH);
     }
 
+    @Nonnull
+    @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }

@@ -6,7 +6,7 @@ license="MIT"
     version="${mod_version}"
     displayName="Horticulture"
     authors="joshiejack"
-    description='''Booya'''
+    description='''Crops and Trees!'''
 [[dependencies.horticulture]]
     modId="forge"
     mandatory=true

@@ -7,7 +7,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.network.NetworkDirection;
-import uk.joshiejack.horticulture.tile.AbstractStumpTileEntity;
+import uk.joshiejack.horticulture.tileentity.AbstractStumpTileEntity;
 import uk.joshiejack.penguinlib.network.PenguinPacket;
 import uk.joshiejack.penguinlib.util.PenguinLoader;
 

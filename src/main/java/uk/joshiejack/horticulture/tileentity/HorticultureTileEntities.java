@@ -1,4 +1,4 @@
-package uk.joshiejack.horticulture.tile;
+package uk.joshiejack.horticulture.tileentity;
 
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;

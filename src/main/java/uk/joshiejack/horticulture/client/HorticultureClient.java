@@ -28,10 +28,10 @@ import net.minecraftforge.fml.common.Mod;
 import uk.joshiejack.horticulture.Horticulture;
 import uk.joshiejack.horticulture.block.HorticultureBlocks;
 import uk.joshiejack.horticulture.client.renderer.FruitLeavesBakedModel;
-import uk.joshiejack.horticulture.client.renderer.StumpBakedModel;
 import uk.joshiejack.horticulture.client.renderer.SeedMakerTileEntityRenderer;
+import uk.joshiejack.horticulture.client.renderer.StumpBakedModel;
 import uk.joshiejack.horticulture.item.HorticultureItems;
-import uk.joshiejack.horticulture.tile.HorticultureTileEntities;
+import uk.joshiejack.horticulture.tileentity.HorticultureTileEntities;
 
 import java.util.Map;
 

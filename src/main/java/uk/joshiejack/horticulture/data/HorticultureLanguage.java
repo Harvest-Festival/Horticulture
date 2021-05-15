@@ -1,9 +1,7 @@
 package uk.joshiejack.horticulture.data;
 
 import net.minecraft.data.DataGenerator;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.registries.ForgeRegistries;
 import uk.joshiejack.horticulture.Horticulture;
 import uk.joshiejack.horticulture.item.HorticultureItems;
 
@@ -49,6 +47,7 @@ public class HorticultureLanguage extends LanguageProvider {
         addItem(HorticultureItems.SWEET_POTATO_SEEDS, "Sweet Potato Slips");
         addItem(HorticultureItems.GREEN_PEPPER_SEEDS, "Green Pepper Seeds");
         addItem(HorticultureItems.GRAPE_STARTER, "Grape Starter");
+        addItem(HorticultureItems.APPLE_SAPLING, "Apple Sapling");
         addItem(HorticultureItems.BANANA_SAPLING, "Banana Sapling");
         addItem(HorticultureItems.ORANGE_SAPLING, "Orange Sapling");
         addItem(HorticultureItems.PEACH_SAPLING, "Peach Sapling");
@@ -89,9 +88,5 @@ public class HorticultureLanguage extends LanguageProvider {
         addItem(HorticultureItems.DARK_OAK_STUMP, "Dark Oak Stump");
         addItem(HorticultureItems.CRIMSON_STUMP, "Crimson Stump");
         addItem(HorticultureItems.WARPED_STUMP, "Warped Stump");
-    }
-
-    public void addItemFromName(String name, String text) {
-        addItem(()-> ForgeRegistries.ITEMS.getValue(new ResourceLocation(Horticulture.MODID, name)), text);
     }
 }

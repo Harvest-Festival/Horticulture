@@ -13,10 +13,11 @@ import net.minecraft.client.renderer.model.ModelManager;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.data.EmptyModelData;
 import net.minecraftforge.client.model.data.IModelData;
 import uk.joshiejack.horticulture.Horticulture;
 import uk.joshiejack.horticulture.block.StumpBlock;
-import uk.joshiejack.horticulture.tile.AbstractStumpTileEntity;
+import uk.joshiejack.horticulture.tileentity.AbstractStumpTileEntity;
 import uk.joshiejack.penguinlib.client.renderer.block.MergeBakedModel;
 
 import javax.annotation.Nonnull;
@@ -65,11 +66,8 @@ public class StumpBakedModel extends MergeBakedModel {
                 models.put(mushroom, new HashMap<>());
             Map<Direction, List<BakedQuad>> map = models.get(mushroom);
             if (!map.containsKey(side)) {
-                List<BakedQuad> quads = Lists.newArrayList(super.getQuads(state, side, random)); //Grab the base stump mdoel
-                TextureAtlasSprite texture = Minecraft.getInstance().getBlockRenderer().getBlockModelShaper().getParticleIcon(mushroom);
-//                Minecraft mc = Minecraft.getInstance();
-//                BlockRendererDispatcher blockRendererDispatcher = mc.getBlockRenderer();
-//                TextureAtlasSprite sprite = blockRendererDispatcher.getBlockModel(state).getParticleIcon();/
+                List<BakedQuad> quads = Lists.newArrayList(super.getQuads(state, side, random)); //Grab the base stump model
+                TextureAtlasSprite texture = Minecraft.getInstance().getBlockRenderer().getBlockModel(state).getParticleTexture(EmptyModelData.INSTANCE);
                 getMushroomMode(stage).getQuads(state, side, random, data).forEach(quad -> quads.add(retexture(quad, texture)));
                 map.put(side, ImmutableList.copyOf(quads));
             }

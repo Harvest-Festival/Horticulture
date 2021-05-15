@@ -49,6 +49,7 @@ public class HorticultureItems {
     public static final RegistryObject<Item> SWEET_POTATO_SEEDS  = ITEMS.register("sweet_potato_seeds", () -> new BlockNamedItem(HorticultureBlocks.SWEET_POTATOES.get(), new Item.Properties().tab(Horticulture.TAB)));
     public static final RegistryObject<Item> GREEN_PEPPER_SEEDS  = ITEMS.register("green_pepper_seeds", () -> new BlockNamedItem(HorticultureBlocks.GREEN_PEPPERS.get(), new Item.Properties().tab(Horticulture.TAB)));
     public static final RegistryObject<Item> GRAPE_STARTER  = ITEMS.register("grape_starter", () -> new BlockNamedItem(HorticultureBlocks.GRAPES.get(), new Item.Properties().tab(Horticulture.TAB)));
+    public static final RegistryObject<Item> APPLE_SAPLING = ITEMS.register("apple_sapling", () -> new BlockItem(HorticultureBlocks.APPLE_SAPLING.get(), new Item.Properties().tab(Horticulture.TAB)));
     public static final RegistryObject<Item> BANANA_SAPLING = ITEMS.register("banana_sapling", () -> new BlockItem(HorticultureBlocks.BANANA_SAPLING.get(), new Item.Properties().tab(Horticulture.TAB)));
     public static final RegistryObject<Item> ORANGE_SAPLING = ITEMS.register("orange_sapling", () -> new BlockItem(HorticultureBlocks.ORANGE_SAPLING.get(), new Item.Properties().tab(Horticulture.TAB)));
     public static final RegistryObject<Item> PEACH_SAPLING  = ITEMS.register("peach_sapling", () -> new BlockItem(HorticultureBlocks.PEACH_SAPLING.get(), new Item.Properties().tab(Horticulture.TAB)));

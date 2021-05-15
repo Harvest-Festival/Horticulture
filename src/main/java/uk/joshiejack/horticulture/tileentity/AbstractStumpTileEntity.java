@@ -1,4 +1,4 @@
-package uk.joshiejack.horticulture.tile;
+package uk.joshiejack.horticulture.tileentity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -21,6 +21,7 @@ import uk.joshiejack.penguinlib.tile.inventory.AbstractInventoryTileEntity;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+@SuppressWarnings("ConstantConditions")
 public abstract class AbstractStumpTileEntity<I extends AbstractStumpRecipe> extends AbstractInventoryTileEntity {
     private final IRecipeType<I> recipeType;
     public static final ModelProperty<BlockState> MUSHROOM_BLOCKSTATE = new ModelProperty<>();

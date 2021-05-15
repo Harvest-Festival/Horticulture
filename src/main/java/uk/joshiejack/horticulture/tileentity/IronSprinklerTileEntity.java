@@ -1,5 +1,6 @@
-package uk.joshiejack.horticulture.tile;
+package uk.joshiejack.horticulture.tileentity;
 
+@SuppressWarnings("ConstantConditions")
 public class IronSprinklerTileEntity extends AbstractSprinklerTileEntity {
     public IronSprinklerTileEntity() {
         super(HorticultureTileEntities.IRON_SPRINKLER.get(), 0.7D, 4);

@@ -11,14 +11,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import uk.joshiejack.horticulture.block.HorticultureBlocks;
 import uk.joshiejack.horticulture.crafting.HorticultureRegistries;
-import uk.joshiejack.horticulture.data.HorticultureRecipes;
 import uk.joshiejack.horticulture.data.*;
 import uk.joshiejack.horticulture.item.HorticultureItems;
-import uk.joshiejack.horticulture.tile.HorticultureTileEntities;
+import uk.joshiejack.horticulture.tileentity.HorticultureTileEntities;
 import uk.joshiejack.horticulture.world.HorticultureWorld;
 
 import javax.annotation.Nonnull;
@@ -27,7 +24,6 @@ import javax.annotation.Nonnull;
 @Mod(Horticulture.MODID)
 public class Horticulture {
     public static final String MODID = "horticulture";
-    public static final Logger LOGGER = LogManager.getLogger();
     public static final ItemGroup TAB = new ItemGroup(MODID) {
         @Nonnull
         @OnlyIn(Dist.CLIENT)
@@ -42,7 +38,7 @@ public class Horticulture {
         HorticultureItems.ITEMS.register(eventBus);
         HorticultureRegistries.SERIALIZERS.register(eventBus);
         HorticultureTileEntities.TILE_ENTITIES.register(eventBus);
-        HorticultureWorld.FEATURES.register(eventBus);
+        HorticultureWorld.FOLIAGE_PLACERS.register(eventBus);
         HorticultureWorld.LOOT_MODIFIER_SERIALIZERS.register(eventBus);
     }
 

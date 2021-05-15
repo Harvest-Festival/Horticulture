@@ -5,7 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockReader;
-import uk.joshiejack.horticulture.tile.SeedMakerTileEntity;
+import uk.joshiejack.horticulture.tileentity.SeedMakerTileEntity;
 import uk.joshiejack.penguinlib.block.base.AbstractPenguinBlock;
 import uk.joshiejack.penguinlib.block.base.AbstractRotatableBlock;
 

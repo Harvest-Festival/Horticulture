@@ -25,6 +25,7 @@ import uk.joshiejack.penguinlib.util.PenguinTags;
 import javax.annotation.Nonnull;
 import java.util.function.Consumer;
 
+@SuppressWarnings("ConstantConditions")
 public class HorticultureRecipes extends RecipeProvider {
     public HorticultureRecipes(DataGenerator generator) {
         super(generator);
@@ -94,6 +95,6 @@ public class HorticultureRecipes extends RecipeProvider {
     }
 
     private void stumpRecipe(RegistryObject<Block> result, Block logs, ITag.INamedTag<Item> mushrooms, @Nonnull Consumer<IFinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(result.get()).define('M', logs).define('L', mushrooms).group("stumps").pattern("L").pattern("Mrrr").unlockedBy("has_shrooms", has(mushrooms)).save(consumer, result.getId());
+        ShapedRecipeBuilder.shaped(result.get()).define('M', logs).define('L', mushrooms).group("stumps").pattern("L").pattern("M").unlockedBy("has_shrooms", has(mushrooms)).save(consumer, result.getId());
     }
 }

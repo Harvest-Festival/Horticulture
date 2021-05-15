@@ -14,8 +14,8 @@ import uk.joshiejack.horticulture.block.trees.AppleTree;
 import uk.joshiejack.horticulture.block.trees.BananaTree;
 import uk.joshiejack.horticulture.block.trees.OrangeTree;
 import uk.joshiejack.horticulture.block.trees.PeachTree;
-import uk.joshiejack.horticulture.tile.NetherStumpTileEntity;
-import uk.joshiejack.horticulture.tile.StumpTileEntity;
+import uk.joshiejack.horticulture.tileentity.NetherStumpTileEntity;
+import uk.joshiejack.horticulture.tileentity.StumpTileEntity;
 
 
 @SuppressWarnings("unused")

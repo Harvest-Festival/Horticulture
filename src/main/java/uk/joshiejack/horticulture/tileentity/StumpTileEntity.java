@@ -1,4 +1,4 @@
-package uk.joshiejack.horticulture.tile;
+package uk.joshiejack.horticulture.tileentity;
 
 import uk.joshiejack.horticulture.crafting.HorticultureRegistries;
 import uk.joshiejack.horticulture.crafting.StumpRecipe;

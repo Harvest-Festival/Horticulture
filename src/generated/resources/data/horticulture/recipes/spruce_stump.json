@@ -1,8 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
+  "group": "stumps",
   "pattern": [
-    "M",
-    "L"
+    "L",
+    "M"
   ],
   "key": {
     "M": {

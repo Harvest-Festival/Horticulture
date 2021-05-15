@@ -10,7 +10,7 @@ import net.minecraft.item.crafting.ShapedRecipe;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistryEntry;
 
 import javax.annotation.Nonnull;
@@ -37,8 +37,7 @@ public class StumpRecipeSerializer extends ForgeRegistryEntry<IRecipeSerializer<
         else {
             String s1 = JSONUtils.getAsString(json, "result");
             ResourceLocation resourcelocation = new ResourceLocation(s1);
-            itemstack = new ItemStack(Registry.ITEM.getOptional(resourcelocation).orElseThrow(
-                    () -> new IllegalStateException("Item: " + s1 + " does not exist")));
+            itemstack = new ItemStack(ForgeRegistries.ITEMS.getValue(resourcelocation));
         }
 
         if (!(itemstack.getItem() instanceof BlockItem))

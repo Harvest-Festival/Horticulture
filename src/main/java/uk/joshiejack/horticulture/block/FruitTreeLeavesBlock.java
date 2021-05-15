@@ -11,12 +11,11 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.RegistryObject;
-import uk.joshiejack.horticulture.HorticultureConfig;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
 
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings("WeakerAccess, deprecation")
 public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
     public static final BooleanProperty IN_SEASON = BooleanProperty.create("in_season");
     private final AbstractBlock.IExtendedPositionPredicate<RegistryObject<Block>> predicate;
@@ -34,24 +33,23 @@ public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
     @Override
     public void randomTick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos pos, @Nonnull Random rand) {
         super.randomTick(state, world, pos, rand);
-        if (HorticultureConfig.leavesGenerateFruit && world.random.nextDouble() <= HorticultureConfig.fruitGrowthChance && state.getValue(IN_SEASON)) {
+        if (state.getValue(IN_SEASON))
             performBonemeal(world, rand, pos, state);
-        }
     }
 
     @Override
     public boolean isValidBonemealTarget(@Nonnull IBlockReader worldIn, @Nonnull BlockPos pos, @Nonnull BlockState state, boolean isClient) {
-        return false;
+        return worldIn.getBlockState(pos.below()).isAir(worldIn, pos);
     }
 
     @Override
     public boolean isBonemealSuccess(@Nonnull World worldIn, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
-        return false;
+        return rand.nextFloat() < 0.25F;
     }
 
     @Override
     public void performBonemeal(@Nonnull ServerWorld worldIn, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
-        if (state.getValue(BlockStateProperties.PERSISTENT) && predicate.test(state, worldIn, pos, block)
+        if (!state.getValue(BlockStateProperties.PERSISTENT) && predicate.test(state, worldIn, pos, block)
                 && worldIn.getBlockState(pos.below()).isAir() && worldIn.getBlockState(pos.below(2)).isAir()) {
             worldIn.setBlock(pos.below(), this.block.get().defaultBlockState(), 2);
         }
@@ -61,6 +59,7 @@ public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
         return type == EntityType.OCELOT || type == EntityType.PARROT;
     }
 
+    @SuppressWarnings("SameReturnValue")
     private static boolean never(BlockState state, IBlockReader reader, BlockPos pos) {
         return false;
     }

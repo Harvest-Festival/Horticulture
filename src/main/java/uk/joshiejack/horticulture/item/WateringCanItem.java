@@ -10,7 +10,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import uk.joshiejack.horticulture.Horticulture;
-import uk.joshiejack.horticulture.HorticultureConfig;
 import uk.joshiejack.penguinlib.item.base.AbstractWateringCanItem;
 
 public class WateringCanItem extends AbstractWateringCanItem {
@@ -20,11 +19,9 @@ public class WateringCanItem extends AbstractWateringCanItem {
 
     @Override
     protected void applyBonemealEffect(World world, BlockPos pos, PlayerEntity player, ItemStack itemstack, Hand hand) {
-        if (HorticultureConfig.bonemealWateringCan) {
-            if (world.random.nextInt(16) == 0 && applyBonemeal(itemstack, world, pos, player)) {
-                if (!world.isClientSide)
-                    world.levelEvent(2005, pos, 0);
-            }
+        if (world.random.nextInt(16) == 0 && applyBonemeal(itemstack, world, pos, player)) {
+            if (!world.isClientSide)
+                world.levelEvent(2005, pos, 0);
         }
     }
 

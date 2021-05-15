@@ -14,6 +14,7 @@ import uk.joshiejack.horticulture.block.FruitBlock;
 import uk.joshiejack.horticulture.block.FruitTreeLeavesBlock;
 import uk.joshiejack.horticulture.block.HorticultureBlocks;
 
+@SuppressWarnings("ConstantConditions")
 public class HorticultureBlockStates extends BlockStateProvider {
     public HorticultureBlockStates(DataGenerator gen, ExistingFileHelper exFileHelper) {
         super(gen, Horticulture.MODID, exFileHelper);
@@ -66,11 +67,6 @@ public class HorticultureBlockStates extends BlockStateProvider {
                 .part().modelFile(models()
                 .cubeAll(block.getRegistryName().getPath(), new ResourceLocation(block.getRegistryName().getNamespace(),
                         "block/leaves/" + block.getRegistryName().getPath().replace("_leaves", "")))).addModel().condition(FruitTreeLeavesBlock.IN_SEASON, true);
-        /*
-        getVariantBuilder(block);
-        ConfiguredModel.builder().modelFile(models()
-                .cubeAll(block.getRegistryName().getPath(), new ResourceLocation(block.getRegistryName().getNamespace(),
-                        "block/leaves/" + block.getRegistryName().getPath().replace("_leaves", "")))).build();*/
     }
 
     protected void mushroomLogs(Block block) {

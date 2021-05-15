@@ -10,7 +10,7 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
-import uk.joshiejack.horticulture.tile.IronSprinklerTileEntity;
+import uk.joshiejack.horticulture.tileentity.IronSprinklerTileEntity;
 import uk.joshiejack.penguinlib.block.base.AbstractPenguinBlock;
 
 import javax.annotation.Nonnull;

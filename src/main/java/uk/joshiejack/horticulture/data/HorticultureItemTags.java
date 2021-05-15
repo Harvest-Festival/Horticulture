@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("ConstantConditions")
 public class HorticultureItemTags extends ItemTagsProvider {
     public static final ITag.INamedTag<Item> STUMPS = ItemTags.createOptional(new ResourceLocation(Horticulture.MODID, "stump"));
     public static final ITag.INamedTag<Item> NETHER_STUMP = ItemTags.createOptional(new ResourceLocation(Horticulture.MODID, "nether_stump"));
@@ -40,7 +41,7 @@ public class HorticultureItemTags extends ItemTagsProvider {
                 HorticultureItems.CORN, HorticultureItems.CUCUMBER, HorticultureItems.EGGPLANT, HorticultureItems.GRAPE,
                 HorticultureItems.GREEN_PEPPER, HorticultureItems.ONION, HorticultureItems.ORANGE, HorticultureItems.PEACH,
                 HorticultureItems.PINEAPPLE, HorticultureItems.SPINACH, HorticultureItems.STRAWBERRY, HorticultureItems.TOMATO,
-                HorticultureItems.TURNIP).stream().map(RegistryObject::get).collect(Collectors.toList());
+                HorticultureItems.TURNIP, HorticultureItems.SWEET_POTATO).stream().map(RegistryObject::get).collect(Collectors.toList());
         items.forEach(item -> {
             cropsTag.add(item);
             tag(ItemTags.createOptional(new ResourceLocation("forge", "crops/"
@@ -48,7 +49,7 @@ public class HorticultureItemTags extends ItemTagsProvider {
             String type = type(item);
             if (type.equals("seeds") || type.equals("starter")) {
                 Item seeds = type.equals("seeds") ? ForgeRegistries.ITEMS.getValue(new ResourceLocation(Horticulture.MODID, item.getRegistryName().getPath() + "_seeds"))
-                :  ForgeRegistries.ITEMS.getValue(new ResourceLocation(Horticulture.MODID, item.getRegistryName().getPath() + "_starter"));
+                        : ForgeRegistries.ITEMS.getValue(new ResourceLocation(Horticulture.MODID, item.getRegistryName().getPath() + "_starter"));
                 assert seeds != null;
                 seedsTag.add(seeds);
                 tag(ItemTags.createOptional(new ResourceLocation("forge", "seeds/"
