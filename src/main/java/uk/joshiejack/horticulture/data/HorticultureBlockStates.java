@@ -34,7 +34,6 @@ public class HorticultureBlockStates extends BlockStateProvider {
         buildCrops(HorticultureBlocks.SPINACH.get());
         buildCrops(HorticultureBlocks.SWEET_POTATOES.get());
         buildCrops(HorticultureBlocks.GREEN_PEPPERS.get());
-        //buildCrops(HorticultureBlocks.GRAPES.get());
         buildFruits(HorticultureBlocks.APPLE_FRUIT.get());
         buildFruits(HorticultureBlocks.BANANA_FRUIT.get());
         buildFruits(HorticultureBlocks.ORANGE_FRUIT.get());
@@ -58,7 +57,6 @@ public class HorticultureBlockStates extends BlockStateProvider {
         leaves(HorticultureBlocks.ORANGE_LEAVES.get());
         leaves(HorticultureBlocks.APPLE_LEAVES.get());
         leaves(HorticultureBlocks.BANANA_LEAVES.get());
-        //models().createTrivialBlock(Blocks.BIRCH_LEAVES, TexturedModel.LEAVES);
     }
 
     protected void leaves(Block block) {

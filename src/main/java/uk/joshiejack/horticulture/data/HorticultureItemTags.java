@@ -38,7 +38,7 @@ public class HorticultureItemTags extends ItemTagsProvider {
         TagsProvider.Builder<Item> seedsTag = tag(Tags.Items.SEEDS);
         TagsProvider.Builder<Item> saplingsTag = tag(ItemTags.SAPLINGS);
         List<Item> items = Lists.newArrayList(HorticultureItems.BANANA, HorticultureItems.CABBAGE,
-                HorticultureItems.CORN, HorticultureItems.CUCUMBER, HorticultureItems.EGGPLANT, HorticultureItems.GRAPE,
+                HorticultureItems.CORN, HorticultureItems.CUCUMBER, HorticultureItems.EGGPLANT,
                 HorticultureItems.GREEN_PEPPER, HorticultureItems.ONION, HorticultureItems.ORANGE, HorticultureItems.PEACH,
                 HorticultureItems.PINEAPPLE, HorticultureItems.SPINACH, HorticultureItems.STRAWBERRY, HorticultureItems.TOMATO,
                 HorticultureItems.TURNIP, HorticultureItems.SWEET_POTATO).stream().map(RegistryObject::get).collect(Collectors.toList());
@@ -68,6 +68,6 @@ public class HorticultureItemTags extends ItemTagsProvider {
 
     private static String type(Item item) {
         String name = item.getRegistryName().getPath();
-        return name.equals("grape") ? "starter" : (name.equals("banana") || name.equals("orange") || name.equals("peach")) ? "sapling" : "seeds";
+        return (name.equals("banana") || name.equals("orange") || name.equals("peach")) ? "sapling" : "seeds";
     }
 }

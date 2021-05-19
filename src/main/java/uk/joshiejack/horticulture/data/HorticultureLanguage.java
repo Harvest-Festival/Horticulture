@@ -26,7 +26,6 @@ public class HorticultureLanguage extends LanguageProvider {
         addItem(HorticultureItems.SWEET_POTATO, "Sweet Potato");
         addItem(HorticultureItems.GREEN_PEPPER, "Green Pepper");
         addItem(HorticultureItems.BANANA, "Banana");
-        addItem(HorticultureItems.GRAPE, "Grape");
         addItem(HorticultureItems.ORANGE, "Orange");
         addItem(HorticultureItems.PEACH, "Peach");
         addItem(HorticultureItems.BROWN_MUSHROOM_SPORES, "Brown Mushroom Spores");
@@ -46,7 +45,6 @@ public class HorticultureLanguage extends LanguageProvider {
         addItem(HorticultureItems.SPINACH_SEEDS, "Spinach Seeds");
         addItem(HorticultureItems.SWEET_POTATO_SEEDS, "Sweet Potato Slips");
         addItem(HorticultureItems.GREEN_PEPPER_SEEDS, "Green Pepper Seeds");
-        addItem(HorticultureItems.GRAPE_STARTER, "Grape Starter");
         addItem(HorticultureItems.APPLE_SAPLING, "Apple Sapling");
         addItem(HorticultureItems.BANANA_SAPLING, "Banana Sapling");
         addItem(HorticultureItems.ORANGE_SAPLING, "Orange Sapling");
@@ -64,7 +62,6 @@ public class HorticultureLanguage extends LanguageProvider {
         addItem(HorticultureItems.PINEAPPLE_JUICE, "Pineapple Juice");
         addItem(HorticultureItems.TOMATO_JUICE, "Tomato Juice");
         addItem(HorticultureItems.STRAWBERRY_MILK, "Strawberry Milk");
-        addItem(HorticultureItems.GRAPE_JUICE, "Grape Juice");
         addItem(HorticultureItems.PEACH_JUICE, "Peach Juice");
         addItem(HorticultureItems.BANANA_JUICE, "Banana Juice");
         addItem(HorticultureItems.ORANGE_JUICE, "Orange Juice");

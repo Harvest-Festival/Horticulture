@@ -73,7 +73,6 @@ public class HorticultureLootTables extends LootTableProvider {
             addCrop(HorticultureBlocks.SPINACH.get(), HorticultureItems.SPINACH.get());
             addCrop(HorticultureBlocks.SWEET_POTATOES.get(), HorticultureItems.SWEET_POTATO.get());
             addCrop(HorticultureBlocks.GREEN_PEPPERS.get(), HorticultureItems.GREEN_PEPPER.get());
-            addCrop(HorticultureBlocks.GRAPES.get(), HorticultureItems.GRAPE.get());
             dropSelf(HorticultureBlocks.APPLE_SAPLING.get());
             dropSelf(HorticultureBlocks.BANANA_SAPLING.get());
             dropSelf(HorticultureBlocks.ORANGE_SAPLING.get());

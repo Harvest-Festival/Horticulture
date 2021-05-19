@@ -42,6 +42,6 @@ public class HorticultureItemModels extends ItemModelProvider {
     }
 
     private boolean isFruit(String name) {
-        return name.equals("banana") || name.equals("grape") || name.equals("orange") || name.equals("peach");
+        return name.equals("banana") || name.equals("orange") || name.equals("peach");
     }
 }

@@ -24,6 +24,5 @@ public class HorticultureDatabase extends AbstractDatabaseProvider {
         new Trade(VillagerProfession.FARMER, 1, HorticultureItems.CABBAGE_SEEDS.get()).setOutputAmount(8).setInputAmount(5).build(this);
         new Trade(VillagerProfession.FARMER, 1, HorticultureItems.PINEAPPLE_SEEDS.get()).setOutputAmount(16).setInputAmount(7).build(this);
         new Trade(VillagerProfession.FARMER, 1, HorticultureItems.GREEN_PEPPER_SEEDS.get()).setOutputAmount(12).setInputAmount(3).build(this);
-        new Trade(VillagerProfession.FARMER, 2, HorticultureItems.GRAPE_STARTER.get()).setOutputAmount(3).setInputAmount(4).build(this);
     }
 }

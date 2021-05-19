@@ -1,0 +1,30 @@
+{
+  "type": "penguinlib:add_drop",
+  "conditions": [
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "condition": "minecraft:match_tool",
+        "predicate": {
+          "item": "minecraft:shears"
+        }
+      }
+    },
+    {
+      "condition": "block_state_property",
+      "block":"minecraft:grass"
+    },
+    {
+      "condition": "minecraft:random_chance",
+      "chance": 0.0625
+    }
+  ],
+  "items": [
+    "horticulture:turnip_seeds",
+    "horticulture:cucumber_seeds",
+    "horticulture:onion_seeds",
+    "horticulture:tomato_seeds",
+    "horticulture:spinach_seeds",
+    "horticulture:eggplant_seeds"
+  ]
+}

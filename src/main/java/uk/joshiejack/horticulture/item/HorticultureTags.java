@@ -17,7 +17,6 @@ public class HorticultureTags {
     public static final ITag.INamedTag<Item> SWEET_POTATO = PenguinTags.forgeTag("crops/sweet_potato");
     public static final ITag.INamedTag<Item> GREEN_PEPPER = PenguinTags.forgeTag("crops/green_pepper");
     public static final ITag.INamedTag<Item> BANANA = PenguinTags.forgeTag("crops/banana");
-    public static final ITag.INamedTag<Item> GRAPE = PenguinTags.forgeTag("crops/grape");
     public static final ITag.INamedTag<Item> ORANGE = PenguinTags.forgeTag("crops/orange");
     public static final ITag.INamedTag<Item> PEACH = PenguinTags.forgeTag("crops/peach");
     public static final ITag.INamedTag<Item> PINEAPPLE = PenguinTags.forgeTag("crops/pineapple");

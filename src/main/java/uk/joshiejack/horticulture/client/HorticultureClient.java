@@ -62,7 +62,6 @@ public class HorticultureClient {
         RenderTypeLookup.setRenderLayer(HorticultureBlocks.SPINACH.get(), cutout);
         RenderTypeLookup.setRenderLayer(HorticultureBlocks.SWEET_POTATOES.get(), cutout);
         RenderTypeLookup.setRenderLayer(HorticultureBlocks.GREEN_PEPPERS.get(), cutout);
-        RenderTypeLookup.setRenderLayer(HorticultureBlocks.GRAPES.get(), cutout);
         RenderTypeLookup.setRenderLayer(HorticultureBlocks.APPLE_SAPLING.get(), cutout);
         RenderTypeLookup.setRenderLayer(HorticultureBlocks.BANANA_SAPLING.get(), cutout);
         RenderTypeLookup.setRenderLayer(HorticultureBlocks.ORANGE_SAPLING.get(), cutout);

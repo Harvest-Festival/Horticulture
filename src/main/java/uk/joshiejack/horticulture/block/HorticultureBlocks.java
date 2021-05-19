@@ -34,7 +34,6 @@ public class HorticultureBlocks {
     public static final RegistryObject<CropBlock> SPINACH = BLOCKS.register("spinach", () -> new CropBlock(3));
     public static final RegistryObject<CropBlock> SWEET_POTATOES = BLOCKS.register("sweet_potatoes", () -> new CropBlock(3, 0));
     public static final RegistryObject<CropBlock> GREEN_PEPPERS = BLOCKS.register("green_peppers", () -> new CropBlock(5, 3));
-    public static final RegistryObject<CropBlock> GRAPES = BLOCKS.register("grapes", () -> new TrellisBlock(4, 2));
     public static final RegistryObject<Block> APPLE_SAPLING = BLOCKS.register("apple_sapling", () -> new SaplingBlock(new AppleTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> BANANA_SAPLING = BLOCKS.register("banana_sapling", () -> new SaplingBlock(new BananaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> ORANGE_SAPLING = BLOCKS.register("orange_sapling", () -> new SaplingBlock(new OrangeTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));

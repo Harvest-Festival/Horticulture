@@ -13,7 +13,6 @@ import net.minecraft.world.gen.foliageplacer.FoliagePlacerType;
 import net.minecraft.world.gen.trunkplacer.AbstractTrunkPlacer;
 import net.minecraft.world.gen.trunkplacer.TrunkPlacerType;
 import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -41,7 +40,6 @@ import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = Horticulture.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class HorticultureWorld {
-    public static final DeferredRegister<GlobalLootModifierSerializer<?>> LOOT_MODIFIER_SERIALIZERS = DeferredRegister.create(ForgeRegistries.LOOT_MODIFIER_SERIALIZERS, Horticulture.MODID);
     public static final DeferredRegister<FoliagePlacerType<?>> FOLIAGE_PLACERS = DeferredRegister.create(ForgeRegistries.FOLIAGE_PLACER_TYPES, Horticulture.MODID);
     public static final RegistryObject<FoliagePlacerType<?>> APPLE_TREE_FOLIAGE_PLACER = FOLIAGE_PLACERS.register("apple_tree", () -> new FoliagePlacerType<>(AppleTreeFoliagePlacer.CODEC));
     public static final RegistryObject<FoliagePlacerType<?>> ORANGE_TREE_FOLIAGE_PLACER = FOLIAGE_PLACERS.register("orange_tree", () -> new FoliagePlacerType<>(OrangeTreeFoliagePlacer.CODEC));

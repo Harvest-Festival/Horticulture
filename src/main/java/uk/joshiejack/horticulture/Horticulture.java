@@ -39,7 +39,6 @@ public class Horticulture {
         HorticultureRegistries.SERIALIZERS.register(eventBus);
         HorticultureTileEntities.TILE_ENTITIES.register(eventBus);
         HorticultureWorld.FOLIAGE_PLACERS.register(eventBus);
-        HorticultureWorld.LOOT_MODIFIER_SERIALIZERS.register(eventBus);
     }
 
     @SubscribeEvent
