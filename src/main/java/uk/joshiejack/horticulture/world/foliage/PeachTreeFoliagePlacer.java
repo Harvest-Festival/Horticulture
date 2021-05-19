@@ -33,6 +33,7 @@ public class PeachTreeFoliagePlacer extends FoliagePlacer {
                                  int trunkHeight, @Nonnull Foliage foliage, int foliageHeight, int radius, @Nonnull Set<BlockPos> leaves, int offset, @Nonnull MutableBoundingBox boundingBox) {
         int top = foliageHeight + 2;
         int bottom = foliageHeight - (trunkHeight + 10);
+        if (trunkHeight %2 == 1) bottom++;
         int size = Math.abs(top - bottom);
         for (int r = 0; r <= size/2; r++) {
             placeLeavesRow(world, random, config, foliage.foliagePos(), Math.min(r, size / 3 + 1), leaves, bottom + r, foliage.doubleTrunk(), boundingBox);

@@ -73,18 +73,13 @@ public class HorticultureWorld {
         return Registry.register(Registry.TRUNK_PLACER_TYPES, new ResourceLocation(Horticulture.MODID, name), constructor.newInstance(codec));
     }
 
-    @SuppressWarnings("unchecked")
-    private static ConfiguredFeature<BaseTreeFeatureConfig, ?> withChance(int chance,  ConfiguredFeature<?, ?> feature) {
-        return (ConfiguredFeature<BaseTreeFeatureConfig, ?>) feature.chance(chance);
-    }
-
     @SubscribeEvent
     public static void onSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            APPLE_TREE = register("apple_tree", withChance(8, Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.APPLE_LEAVES.get().defaultBlockState()), new AppleTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new AppleTreeTrunkPlacer(3, 5, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build())));
-            ORANGE_TREE = register("orange_tree", withChance(6, Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.ORANGE_LEAVES.get().defaultBlockState()), new OrangeTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new OrangeTreeTrunkPlacer(4, 5, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build())));
-            PEACH_TREE = register("peach_tree", withChance(4, Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.PEACH_LEAVES.get().defaultBlockState()), new PeachTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new PeachTreeTrunkPlacer(5, 2, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build())));
-            BANANA_TREE = register("banana_tree", withChance(4, Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.JUNGLE_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.BANANA_LEAVES.get().defaultBlockState()), new BananaTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new BananaTreeTrunkPlacer(4, 5, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build())));
+            APPLE_TREE = register("apple_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.APPLE_LEAVES.get().defaultBlockState()), new AppleTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new AppleTreeTrunkPlacer(3, 0, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
+            ORANGE_TREE = register("orange_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.ORANGE_LEAVES.get().defaultBlockState()), new OrangeTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new OrangeTreeTrunkPlacer(5, 4, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
+            PEACH_TREE = register("peach_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.PEACH_LEAVES.get().defaultBlockState()), new PeachTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new PeachTreeTrunkPlacer(5, 2, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
+            BANANA_TREE = register("banana_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.JUNGLE_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.BANANA_LEAVES.get().defaultBlockState()), new BananaTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new BananaTreeTrunkPlacer(5, 0, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
         });
     }
 
@@ -94,9 +89,9 @@ public class HorticultureWorld {
         public static void onBiomeLoad(BiomeLoadingEvent event) {
             Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(RegistryKey.create(Registry.BIOME_REGISTRY, Objects.requireNonNull(event.getName())));
             if (types.contains(BiomeDictionary.Type.JUNGLE))
-                event.getGeneration().addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HorticultureWorld.BANANA_TREE);
+                event.getGeneration().addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HorticultureWorld.BANANA_TREE.chance(4));
             else if (types.contains(BiomeDictionary.Type.FOREST))
-                event.getGeneration().addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HorticultureWorld.APPLE_TREE);
+                event.getGeneration().addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HorticultureWorld.APPLE_TREE.chance(8));
         }
     }
 }

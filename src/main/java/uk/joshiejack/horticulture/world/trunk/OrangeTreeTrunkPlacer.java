@@ -67,7 +67,7 @@ public class OrangeTreeTrunkPlacer extends AbstractTrunkPlacer {
             if (i %2 == 0) {
                 placeBranches(reader, random, target.above((i + 1) * 2), trunkBlocks, bounding, config, width - (i + 1), branch);
             } else {
-                placeBranches(reader, random, target.below(i * 2), trunkBlocks, bounding, config, width - (i + 1), branch);
+               placeBranches(reader, random, target.below(i * 2), trunkBlocks, bounding, config, width - (i + 1), branch);
             }
         }
 

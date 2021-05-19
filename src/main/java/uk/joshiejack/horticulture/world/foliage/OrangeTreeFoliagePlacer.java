@@ -31,7 +31,37 @@ public class OrangeTreeFoliagePlacer extends FoliagePlacer {
     @Override
     protected void createFoliage(@Nonnull IWorldGenerationReader world, @Nonnull Random random, @Nonnull BaseTreeFeatureConfig config,
                                  int trunkHeight, @Nonnull Foliage foliage, int foliageHeight, int radius, @Nonnull Set<BlockPos> leaves, int offset, @Nonnull MutableBoundingBox boundingBox) {
+        int extraBranches = trunkHeight - 7;
+        int width = Math.max(2, trunkHeight / 2) + 3;
+        int branch = foliageHeight - (trunkHeight / 2);
+        if (trunkHeight % 2 == 1) branch++;
+        placeLeavesRow(world, random, config, foliage.foliagePos().above(5), width - 3, leaves, branch, foliage.doubleTrunk(), boundingBox);
+        placeLeavesRow(world, random, config, foliage.foliagePos().above(4), width - 1, leaves, branch, foliage.doubleTrunk(), boundingBox);
+        placeLeavesRow(world, random, config, foliage.foliagePos().above(3), width, leaves, branch, foliage.doubleTrunk(), boundingBox);
+        placeLeavesRow(world, random, config, foliage.foliagePos().above(2), width + 1, leaves, branch, foliage.doubleTrunk(), boundingBox);
+        placeLeavesRow(world, random, config, foliage.foliagePos().above(), width + 2, leaves, branch, foliage.doubleTrunk(), boundingBox);
+        placeLeavesRow(world, random, config, foliage.foliagePos(), width, leaves, branch, foliage.doubleTrunk(), boundingBox);
+        placeLeavesRow(world, random, config, foliage.foliagePos().below(), width - 1, leaves, branch, foliage.doubleTrunk(), boundingBox);
+        placeLeavesRow(world, random, config, foliage.foliagePos().below(2), width -2, leaves, branch, foliage.doubleTrunk(), boundingBox);
 
+        for (int i = 0; i < extraBranches; i++) {
+            if (i % 2 == 0) {
+                placeLeavesRow(world, random, config, foliage.foliagePos().above((i + 1) * 2).above(), 1 + width - (i + 1), leaves, branch, foliage.doubleTrunk(), boundingBox);
+                placeLeavesRow(world, random, config, foliage.foliagePos().above((i + 1) * 2), 2 + width - (i + 1), leaves, branch, foliage.doubleTrunk(), boundingBox);
+                placeLeavesRow(world, random, config, foliage.foliagePos().above((i + 1) * 2).below(), width - (i + 1), leaves, branch, foliage.doubleTrunk(), boundingBox);
+                placeLeavesRow(world, random, config, foliage.foliagePos().above((i + 1) * 2).below(2), width - (i + 1) - 2, leaves, branch, foliage.doubleTrunk(), boundingBox);
+            } else {
+                placeLeavesRow(world, random, config, foliage.foliagePos().below(i * 2).above(), 1 + width - (i + 1), leaves, branch, foliage.doubleTrunk(), boundingBox);
+                placeLeavesRow(world, random, config, foliage.foliagePos().below(i * 2), 2 + width - (i + 1), leaves, branch, foliage.doubleTrunk(), boundingBox);
+                placeLeavesRow(world, random, config, foliage.foliagePos().below(i * 2).below(), width - (i + 1), leaves, branch, foliage.doubleTrunk(), boundingBox);
+                placeLeavesRow(world, random, config, foliage.foliagePos().below(i * 2).below(2), width - (i + 1) - 1, leaves, branch, foliage.doubleTrunk(), boundingBox);
+            }
+        }
+
+        //placeLeavesRow(world, random, config, foliage.foliagePos().east(), width, leaves, branch, foliage.doubleTrunk(), boundingBox);
+        // placeLeavesRow(world, random, config, foliage.foliagePos().west(), width, leaves, branch, foliage.doubleTrunk(), boundingBox);
+        //placeLeavesRow(world, random, config, foliage.foliagePos().north(), width, leaves, branch, foliage.doubleTrunk(), boundingBox);
+        //placeLeavesRow(world, random, config, foliage.foliagePos().south(), width, leaves, branch, foliage.doubleTrunk(), boundingBox);
     }
 
     @Override
@@ -40,7 +70,10 @@ public class OrangeTreeFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    protected boolean shouldSkipLocation(@Nonnull Random random, int baseHeight, int x, int y, int z, boolean giantTrunk) {
-        return false;
+    protected boolean shouldSkipLocation(@Nonnull Random random, int ns, int y, int ew, int radius, boolean giantTrunk) {
+        BlockPos centre = BlockPos.ZERO;
+        BlockPos leaves = new BlockPos(ns, 0, ew);
+        int distance = (int) centre.distSqr(leaves);
+        return distance > ((4 * radius)) + 2 || (ew == ns && random.nextInt(3) == 0);
     }
 }
