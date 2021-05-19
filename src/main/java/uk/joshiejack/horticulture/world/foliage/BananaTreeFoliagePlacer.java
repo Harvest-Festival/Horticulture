@@ -2,6 +2,7 @@ package uk.joshiejack.horticulture.world.foliage;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.gen.IWorldGenerationReader;
@@ -31,7 +32,32 @@ public class BananaTreeFoliagePlacer extends FoliagePlacer {
     @Override
     protected void createFoliage(@Nonnull IWorldGenerationReader world, @Nonnull Random random, @Nonnull BaseTreeFeatureConfig config,
                                  int trunkHeight, @Nonnull Foliage foliage, int foliageHeight, int radius, @Nonnull Set<BlockPos> leaves, int offset, @Nonnull MutableBoundingBox boundingBox) {
+        placeLeavesRow(world, random, config, foliage.foliagePos().above(), 0, leaves, foliageHeight, foliage.doubleTrunk(), boundingBox);
+        int count = 0;
+        for (Direction dir: Direction.Plane.HORIZONTAL) {
+            placeLeavesRow(world, random, config, foliage.foliagePos().below().relative(dir, 2), 0, leaves, foliageHeight, foliage.doubleTrunk(), boundingBox);
+            placeLeavesRow(world, random, config, foliage.foliagePos().below(2).relative(dir, 3), 0, leaves, foliageHeight, foliage.doubleTrunk(), boundingBox);
+            if (random.nextBoolean()) {
+                placeLeavesRow(world, random, config, foliage.foliagePos().below().relative(dir, 2).relative(dir.getCounterClockWise(), 2), 0, leaves, foliageHeight, foliage.doubleTrunk(), boundingBox);
+                placeLeavesRow(world, random, config, foliage.foliagePos().below(2).relative(dir, 3).relative(dir.getCounterClockWise(), 2), 0, leaves, foliageHeight, foliage.doubleTrunk(), boundingBox);
+            }
 
+            if (random.nextBoolean() && count < 5) {
+                placeLeavesRow(world, random, config, foliage.foliagePos().above().relative(dir), 0, leaves, foliageHeight, foliage.doubleTrunk(), boundingBox);
+                count++;
+                for (Direction direction: Direction.Plane.HORIZONTAL) {
+                    if (random.nextBoolean()) {
+                        placeLeavesRow(world, random, config, foliage.foliagePos().above().relative(dir).relative(direction), 0, leaves, foliageHeight, foliage.doubleTrunk(), boundingBox);
+                        count++;
+
+                        if (count > 5)
+                            break;
+                    }
+                }
+            }
+        }
+
+        placeLeavesRow(world, random, config, foliage.foliagePos(), 1, leaves, foliageHeight, foliage.doubleTrunk(), boundingBox);
     }
 
     @Override
