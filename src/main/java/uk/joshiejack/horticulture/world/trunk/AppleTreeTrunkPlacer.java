@@ -46,12 +46,12 @@ public class AppleTreeTrunkPlacer extends AbstractTrunkPlacer {
                                                   @Nonnull BlockPos target, @Nonnull Set<BlockPos> trunkBlocks, @Nonnull MutableBoundingBox bounding, @Nonnull BaseTreeFeatureConfig config) {
         int width = 3 + random.nextInt(3);
         boolean upper = random.nextBoolean();
-        if (random.nextBoolean()) {
-            placeBranches(reader, random, target.above(trunkHeight).below(upper ? 1 : 0), trunkBlocks, bounding, config, width, Direction.NORTH);
-            placeBranches(reader, random, target.above(trunkHeight).below(upper ? 0 : 1), trunkBlocks, bounding, config, width, Direction.SOUTH);
+        if (trunkHeight %2 == 0) {
+            placeBranches(reader, random, target.above(trunkHeight).below(trunkHeight %4 == 0 ? 1 : 0), trunkBlocks, bounding, config, width, Direction.NORTH);
+            placeBranches(reader, random, target.above(trunkHeight).below(trunkHeight %4 == 0 ? 0 : 1), trunkBlocks, bounding, config, width, Direction.SOUTH);
         } else {
-            placeBranches(reader, random, target.above(trunkHeight).below(upper ? 1 : 0), trunkBlocks, bounding, config, width, Direction.EAST);
-            placeBranches(reader, random, target.above(trunkHeight).below(upper ? 0 : 1), trunkBlocks, bounding, config, width, Direction.WEST);
+            placeBranches(reader, random, target.above(trunkHeight).below(trunkHeight %3 == 0 ? 1 : 0), trunkBlocks, bounding, config, width, Direction.EAST);
+            placeBranches(reader, random, target.above(trunkHeight).below(trunkHeight %3 == 0 ? 0 : 1), trunkBlocks, bounding, config, width, Direction.WEST);
         }
         return super.placeTrunk(reader, random, trunkHeight, target, trunkBlocks, bounding, config);
     }
