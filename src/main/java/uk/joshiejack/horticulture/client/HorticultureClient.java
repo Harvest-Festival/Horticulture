@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.model.BakedQuad;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ModelResourceLocation;
 import net.minecraft.client.renderer.texture.AtlasTexture;
@@ -160,7 +161,13 @@ public class HorticultureClient {
         FruitLeavesBakedModel appleModel = new FruitLeavesBakedModel(appleLeaves, oakLeaves, appleFlowering, appleEmpty);
         FruitLeavesBakedModel orangeModel = new FruitLeavesBakedModel(orangeLeaves, oakLeaves, orangeFlowering, orangeEmpty);
         FruitLeavesBakedModel peachModel = new FruitLeavesBakedModel(peachLeaves, oakLeaves, peachFlowering, peachEmpty);
-        FruitLeavesBakedModel bananaModel = new FruitLeavesBakedModel(bananaLeaves, jungleLeaves, bananaFlowering, bananaEmpty);
+        FruitLeavesBakedModel bananaModel = new FruitLeavesBakedModel(bananaLeaves, jungleLeaves, bananaFlowering, bananaEmpty) {
+            @Override
+            public int getTintIndex(BakedQuad quad) {
+                return 0;
+            }
+        };
+
         replaceLeavesModel(registry, "apple_leaves", appleModel);
         replaceLeavesModel(registry, "orange_leaves", orangeModel);
         replaceLeavesModel(registry, "peach_leaves", peachModel);

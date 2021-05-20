@@ -51,12 +51,16 @@ public class FruitLeavesBakedModel extends BakedModelWrapper<IBakedModel> {
             if (Minecraft.useFancyGraphics()) {
                 list.addAll(base.getQuads(state, side, random));
                 FruitLeavesBakedModel.super.getQuads(state, side, random).stream()
-                        .map(quad -> new BakedQuad(quad.getVertices(), 0, quad.getDirection(), quad.getSprite(), quad.isShade())).forEachOrdered(list::add);
+                        .map(quad -> new BakedQuad(quad.getVertices(), getTintIndex(quad), quad.getDirection(), quad.getSprite(), quad.isShade())).forEachOrdered(list::add);
             } else
                 BakedModelHelper.buildCube(side, flowering, list);
             quads.put(side, list);
             return list;
         } else return quads.get(side);
+    }
+
+    protected int getTintIndex(BakedQuad quad) {
+        return quad.getTintIndex();
     }
 
     @Nonnull
@@ -71,7 +75,7 @@ public class FruitLeavesBakedModel extends BakedModelWrapper<IBakedModel> {
             if (Minecraft.useFancyGraphics()) {
                 list.addAll(base.getQuads(state, side, random, data));
                 FruitLeavesBakedModel.super.getQuads(state, side, random).stream()
-                        .map(quad -> new BakedQuad(quad.getVertices(), 0, quad.getDirection(), quad.getSprite(), quad.isShade())).forEachOrdered(list::add);
+                        .map(quad -> new BakedQuad(quad.getVertices(), getTintIndex(quad), quad.getDirection(), quad.getSprite(), quad.isShade())).forEachOrdered(list::add);
             } else
                 BakedModelHelper.buildCube(side, inSeason ? flowering : empty, list);
             quads.put(side, list);

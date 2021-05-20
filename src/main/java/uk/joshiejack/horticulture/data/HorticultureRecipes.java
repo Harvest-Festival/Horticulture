@@ -68,15 +68,15 @@ public class HorticultureRecipes extends RecipeProvider {
         ShapelessRecipeBuilder.shapeless(HorticultureItems.PEACH_JUICE.get(), 1).requires(HorticultureTags.PEACH).requires(PenguinItems.GLASS.get()).unlockedBy("has_peach", has(HorticultureTags.PEACH)).save(consumer, rl("peach_juice"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.BANANA_JUICE.get(), 1).requires(HorticultureTags.BANANA).requires(PenguinItems.GLASS.get()).unlockedBy("has_banana", has(HorticultureTags.BANANA)).save(consumer, rl("banana_juice"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.ORANGE_JUICE.get(), 1).requires(HorticultureTags.ORANGE).requires(PenguinItems.GLASS.get()).unlockedBy("has_orange", has(HorticultureTags.ORANGE)).save(consumer, rl("orange_juice"));
-        ShapelessRecipeBuilder.shapeless(HorticultureItems.APPLE_JUICE.get(), 1).requires(PenguinTags.APPLE).requires(PenguinItems.GLASS.get()).unlockedBy("has_apple", has(PenguinTags.APPLE)).save(consumer, rl("apple_juice"));
+        ShapelessRecipeBuilder.shapeless(HorticultureItems.APPLE_JUICE.get(), 1).requires(PenguinTags.CROPS_APPLE).requires(PenguinItems.GLASS.get()).unlockedBy("has_apple", has(PenguinTags.CROPS_APPLE)).save(consumer, rl("apple_juice"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.PICKLED_CUCUMBER.get(), 1).requires(HorticultureTags.CUCUMBER).requires(PenguinItems.PICKLING_JAR.get()).unlockedBy("has_cucumber", has(HorticultureTags.CUCUMBER)).save(consumer, rl("pickled_cucumber"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.CORNFLAKES.get(), 1).requires(HorticultureTags.CORN).requires(PenguinItems.DEEP_BOWL.get()).requires(Items.MILK_BUCKET).unlockedBy("has_corn", has(HorticultureTags.CORN)).save(consumer, rl("cornflakes"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.CANDIED_POTATO.get(), 1).requires(HorticultureTags.SWEET_POTATO).requires(PenguinItems.DEEP_BOWL.get()).unlockedBy("has_sweet_potato", has(HorticultureTags.SWEET_POTATO)).save(consumer, rl("candied_potato"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.BOILED_SPINACH.get(), 1).requires(HorticultureTags.SPINACH).requires(PenguinItems.DEEP_BOWL.get()).unlockedBy("has_spinach", has(HorticultureTags.SPINACH)).save(consumer, rl("boiled_spinach"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.STIR_FRY.get(), 1).requires(HorticultureTags.CABBAGE).requires(PenguinItems.PLATE.get()).unlockedBy("has_cabbage", has(HorticultureTags.CABBAGE)).save(consumer, rl("stir_fry"));
-        ShapelessRecipeBuilder.shapeless(HorticultureItems.PUMPKIN_STEW.get(), 1).requires(PenguinTags.PUMPKIN).requires(PenguinItems.DEEP_BOWL.get()).unlockedBy("has_pumpkin", has(PenguinTags.PUMPKIN)).save(consumer, rl("pumpkin_stew"));
+        ShapelessRecipeBuilder.shapeless(HorticultureItems.PUMPKIN_STEW.get(), 1).requires(PenguinTags.CROPS_PUMPKIN).requires(PenguinItems.DEEP_BOWL.get()).unlockedBy("has_pumpkin", has(PenguinTags.CROPS_PUMPKIN)).save(consumer, rl("pumpkin_stew"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.SALAD.get(), 1).requires(HorticultureTags.ONION).requires(HorticultureTags.GREEN_PEPPER).requires(HorticultureTags.TOMATO).requires(PenguinItems.DEEP_BOWL.get()).unlockedBy("has_green_pepper", has(HorticultureTags.GREEN_PEPPER)).save(consumer, rl("salad"));
-        ShapelessRecipeBuilder.shapeless(HorticultureItems.BAKED_CORN.get(), 1).requires(HorticultureTags.CORN).requires(PenguinItems.PLATE.get()).unlockedBy("has_corn", has(PenguinTags.PUMPKIN)).save(consumer, rl("baked_corn"));
+        ShapelessRecipeBuilder.shapeless(HorticultureItems.BAKED_CORN.get(), 1).requires(HorticultureTags.CORN).requires(PenguinItems.PLATE.get()).unlockedBy("has_corn", has(PenguinTags.CROPS_PUMPKIN)).save(consumer, rl("baked_corn"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.HAPPY_EGGPLANT.get(), 1).requires(HorticultureTags.EGGPLANT).requires(PenguinItems.PLATE.get()).unlockedBy("has_eggplant", has(HorticultureTags.EGGPLANT)).save(consumer, rl("happy_eggplant"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.PICKLED_TURNIP.get(), 1).requires(HorticultureTags.TURNIP).requires(PenguinItems.PLATE.get()).unlockedBy("has_turnip", has(HorticultureTags.TURNIP)).save(consumer, rl("pickled_turnip"));
         ShapedRecipeBuilder.shaped(HorticultureItems.WATERING_CAN.get()).define('S', Tags.Items.STONE).define('B', Items.BUCKET).pattern("S  ").pattern("SBS").pattern(" S ").unlockedBy("has_stone", has(Tags.Items.STONE)).save(consumer, rl("watering_can"));
@@ -89,8 +89,8 @@ public class HorticultureRecipes extends RecipeProvider {
         stumpRecipe(HorticultureBlocks.JUNGLE_STUMP, Blocks.JUNGLE_LOG, Tags.Items.MUSHROOMS, consumer);
         stumpRecipe(HorticultureBlocks.ACACIA_STUMP, Blocks.ACACIA_LOG, Tags.Items.MUSHROOMS, consumer);
         stumpRecipe(HorticultureBlocks.DARK_OAK_STUMP, Blocks.DARK_OAK_LOG, Tags.Items.MUSHROOMS, consumer);
-        stumpRecipe(HorticultureBlocks.CRIMSON_STUMP, Blocks.CRIMSON_STEM, PenguinTags.FUNGUS, consumer);
-        stumpRecipe(HorticultureBlocks.WARPED_STUMP, Blocks.WARPED_STEM, PenguinTags.FUNGUS, consumer);
+        stumpRecipe(HorticultureBlocks.CRIMSON_STUMP, Blocks.CRIMSON_STEM, PenguinTags.FUNGI, consumer);
+        stumpRecipe(HorticultureBlocks.WARPED_STUMP, Blocks.WARPED_STEM, PenguinTags.FUNGI, consumer);
     }
 
     private void stumpRecipe(RegistryObject<Block> result, Block logs, ITag.INamedTag<Item> mushrooms, @Nonnull Consumer<IFinishedRecipe> consumer) {

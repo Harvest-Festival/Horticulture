@@ -32,8 +32,11 @@ public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
 
     @Override
     public void randomTick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos pos, @Nonnull Random rand) {
-        super.randomTick(state, world, pos, rand);
-        if (state.getValue(IN_SEASON))
+        if (!state.getValue(PERSISTENT) && state.getValue(DISTANCE) == 7) {
+            dropResources(state, world, pos);
+            world.removeBlock(pos, false);
+            world.updateNeighborsAt(pos, Blocks.AIR);
+        } else if (state.getValue(IN_SEASON))
             performBonemeal(world, rand, pos, state);
     }
 
