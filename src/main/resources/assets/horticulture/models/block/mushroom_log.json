@@ -4,6 +4,13 @@
 	"textures": {
 		"particle": "#side"
 	},
+	"display": {
+		"gui": {
+			"rotation": [30, 225, 0],
+			"translation": [0, 3, 0],
+			"scale": [0.875, 0.875, 0.875]
+		}
+	},
 	"elements": [
 		{
 			"from": [ 3, 0, 3 ],

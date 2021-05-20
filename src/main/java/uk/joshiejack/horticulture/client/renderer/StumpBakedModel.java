@@ -13,12 +13,15 @@ import net.minecraft.client.renderer.model.ModelManager;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.model.BakedModelWrapper;
 import net.minecraftforge.client.model.data.EmptyModelData;
 import net.minecraftforge.client.model.data.IModelData;
 import uk.joshiejack.horticulture.Horticulture;
 import uk.joshiejack.horticulture.block.StumpBlock;
 import uk.joshiejack.horticulture.tileentity.AbstractStumpTileEntity;
-import uk.joshiejack.penguinlib.client.renderer.block.MergeBakedModel;
+import uk.joshiejack.penguinlib.client.helpers.BakedModelHelper;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -27,8 +30,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-@SuppressWarnings("unused")
-public class StumpBakedModel extends MergeBakedModel {
+@OnlyIn(Dist.CLIENT)
+public class StumpBakedModel extends BakedModelWrapper<IBakedModel> {
     public static final ResourceLocation MUSHROOM_0 = new ResourceLocation(Horticulture.MODID, "block/mushroom_0");
     public static final ResourceLocation MUSHROOM_1 = new ResourceLocation(Horticulture.MODID, "block/mushroom_1");
     public static final ResourceLocation MUSHROOM_2 = new ResourceLocation(Horticulture.MODID, "block/mushroom_2");
@@ -68,7 +71,7 @@ public class StumpBakedModel extends MergeBakedModel {
             if (!map.containsKey(side)) {
                 List<BakedQuad> quads = Lists.newArrayList(super.getQuads(state, side, random)); //Grab the base stump model
                 TextureAtlasSprite texture = Minecraft.getInstance().getBlockRenderer().getBlockModel(state).getParticleTexture(EmptyModelData.INSTANCE);
-                getMushroomMode(stage).getQuads(state, side, random, data).forEach(quad -> quads.add(retexture(quad, texture)));
+                getMushroomMode(stage).getQuads(state, side, random, data).forEach(quad -> quads.add(BakedModelHelper.retexture(quad, texture)));
                 map.put(side, ImmutableList.copyOf(quads));
             }
 

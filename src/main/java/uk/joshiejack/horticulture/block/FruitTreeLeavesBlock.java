@@ -49,7 +49,7 @@ public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
 
     @Override
     public void performBonemeal(@Nonnull ServerWorld worldIn, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
-        if (!state.getValue(BlockStateProperties.PERSISTENT) && predicate.test(state, worldIn, pos, block)
+        if (!state.getValue(BlockStateProperties.PERSISTENT) && predicate.test(state, worldIn, pos.below(), block)
                 && worldIn.getBlockState(pos.below()).isAir() && worldIn.getBlockState(pos.below(2)).isAir()) {
             worldIn.setBlock(pos.below(), this.block.get().defaultBlockState(), 2);
         }

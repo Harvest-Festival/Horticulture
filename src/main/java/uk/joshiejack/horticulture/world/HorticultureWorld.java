@@ -2,6 +2,7 @@ package uk.joshiejack.horticulture.world;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
@@ -76,10 +77,10 @@ public class HorticultureWorld {
     @SubscribeEvent
     public static void onSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            APPLE_TREE = register("apple_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.APPLE_LEAVES.get().defaultBlockState()), new AppleTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new AppleTreeTrunkPlacer(3, 4, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
-            ORANGE_TREE = register("orange_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.ORANGE_LEAVES.get().defaultBlockState()), new OrangeTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new OrangeTreeTrunkPlacer(5, 4, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
-            PEACH_TREE = register("peach_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.PEACH_LEAVES.get().defaultBlockState()), new PeachTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new PeachTreeTrunkPlacer(5, 2, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
-            BANANA_TREE = register("banana_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.JUNGLE_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.BANANA_LEAVES.get().defaultBlockState()), new BananaTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new BananaTreeTrunkPlacer(5, 5, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
+            APPLE_TREE = register("apple_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.APPLE_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 5)), new AppleTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new AppleTreeTrunkPlacer(4, 4, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
+            ORANGE_TREE = register("orange_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.ORANGE_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 4)), new OrangeTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new OrangeTreeTrunkPlacer(5, 4, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
+            PEACH_TREE = register("peach_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.OAK_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.PEACH_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 3)), new PeachTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new PeachTreeTrunkPlacer(5, 2, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
+            BANANA_TREE = register("banana_tree", Feature.TREE.configured((new BaseTreeFeatureConfig.Builder(new SimpleBlockStateProvider(Blocks.JUNGLE_LOG.defaultBlockState()), new SimpleBlockStateProvider(HorticultureBlocks.BANANA_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 3)), new BananaTreeFoliagePlacer(FeatureSpread.fixed(2), FeatureSpread.fixed(0)), new BananaTreeTrunkPlacer(5, 5, 0), new TwoLayerFeature(1, 0, 1))).ignoreVines().build()));
         });
     }
 
@@ -91,7 +92,7 @@ public class HorticultureWorld {
             if (types.contains(BiomeDictionary.Type.JUNGLE))
                 event.getGeneration().addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HorticultureWorld.BANANA_TREE.chance(4));
             else if (types.contains(BiomeDictionary.Type.FOREST))
-                event.getGeneration().addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HorticultureWorld.APPLE_TREE.chance(8));
+                event.getGeneration().addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, HorticultureWorld.APPLE_TREE.chance(16));
         }
     }
 }

@@ -33,19 +33,23 @@ public class AppleTreeFoliagePlacer extends BlobFoliagePlacer {
     protected void createFoliage(@Nonnull IWorldGenerationReader world, @Nonnull Random random, @Nonnull BaseTreeFeatureConfig config,
                                  int trunkHeight, @Nonnull Foliage foliage, int foliageHeight, int radius, @Nonnull Set<BlockPos> leaves, int offset, @Nonnull MutableBoundingBox boundingBox) {
         placeLeavesRow(world, random, config, foliage.foliagePos(), 2, leaves, foliageHeight + 1, foliage.doubleTrunk(), boundingBox);
-        int width = 4 + random.nextInt(2);
+        int width = 3 + random.nextInt(2);
         if (trunkHeight %2 == 0) {
-            for (int i = -3; i <= 2; i++) {
+            for (int i = -3; i <= 1; i++) {
                 int j = Math.max(radius + foliage.radiusOffset() - 1 - i / 2, 1);
-                placeLeavesRow(world, random, config, foliage.foliagePos().relative(Direction.NORTH, (width/2) + 1).above(trunkHeight %4 == 0 ? 2 : 0), j * (width /2), leaves, foliageHeight + i, foliage.doubleTrunk(), boundingBox);
-                placeLeavesRow(world, random, config, foliage.foliagePos().relative(Direction.SOUTH, (width/2) + 1).above(trunkHeight %4 == 0 ? 0 : 1), j * (width /2), leaves, foliageHeight + i, foliage.doubleTrunk(), boundingBox);
+                for (int k = 1; k <= width + 1; k++) {
+                    placeLeavesRow(world, random, config, foliage.foliagePos().relative(Direction.NORTH, k).above(trunkHeight % 4 == 0 ? 2 : 0), j, leaves, foliageHeight + i, foliage.doubleTrunk(), boundingBox);
+                    placeLeavesRow(world, random, config, foliage.foliagePos().relative(Direction.SOUTH, k).above(trunkHeight % 4 == 0 ? 0 : 2), j, leaves, foliageHeight + i, foliage.doubleTrunk(), boundingBox);
+                }
             }
 
         } else {
-            for (int i = -3; i <= 2; i++) {
+            for (int i = -3; i <= 1; i++) {
                 int j = Math.max(radius + foliage.radiusOffset() - 1 - i / 2, 1);
-                placeLeavesRow(world, random, config, foliage.foliagePos().relative(Direction.EAST, (width/2) + 1).above(trunkHeight %3 == 0 ? 2 : 0), j * (width /2), leaves, foliageHeight + i, foliage.doubleTrunk(), boundingBox);
-                placeLeavesRow(world, random, config, foliage.foliagePos().relative(Direction.WEST, (width/2) + 1).above(trunkHeight %3 == 0 ? 1 : 0), j * (width /2), leaves, foliageHeight + i, foliage.doubleTrunk(), boundingBox);
+                for (int k = 1; k <= width + 1; k++) {
+                    placeLeavesRow(world, random, config, foliage.foliagePos().relative(Direction.WEST, k).above(trunkHeight % 3 == 0 ? 2 : 0), j, leaves, foliageHeight + i, foliage.doubleTrunk(), boundingBox);
+                    placeLeavesRow(world, random, config, foliage.foliagePos().relative(Direction.EAST, k).above(trunkHeight % 3 == 0 ? 0 : 2), j, leaves, foliageHeight + i, foliage.doubleTrunk(), boundingBox);
+                }
             }
         }
     }
@@ -60,6 +64,6 @@ public class AppleTreeFoliagePlacer extends BlobFoliagePlacer {
         BlockPos centre = BlockPos.ZERO;
         BlockPos leaves = new BlockPos(ns, 0, ew);
         int distance = (int) centre.distSqr(leaves);
-        return distance > ((4 * radius)) + 2 || (ew == ns && random.nextInt(3) == 0) || super.shouldSkipLocation(random, ns, y, ew, radius, giantTrunk);
+        return distance > ((4 * radius)) || (ew == ns && random.nextInt(3) == 0) || super.shouldSkipLocation(random, ns, y, ew, radius, giantTrunk);
     }
 }

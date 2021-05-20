@@ -6,6 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -51,15 +52,7 @@ public class FruitBlock extends BushBlock implements IGrowable {
 
     @Override
     public boolean canSurvive(@Nonnull BlockState state, @Nonnull IWorldReader world, @Nonnull BlockPos pos) {
-        if (state.getBlock() == this) {
-            Block block = world.getBlockState(pos.above()).getBlock();
-            if (this == HorticultureBlocks.APPLE_FRUIT.get()) return block == HorticultureBlocks.APPLE_LEAVES.get();
-            else if (this == HorticultureBlocks.BANANA_FRUIT.get()) return block == HorticultureBlocks.BANANA_LEAVES.get();
-            else if (this == HorticultureBlocks.ORANGE_FRUIT.get()) return block == HorticultureBlocks.ORANGE_LEAVES.get();
-            else return block == HorticultureBlocks.PEACH_LEAVES.get();
-        }
-
-        return true;
+        return state.getBlock() != this || BlockTags.LEAVES.contains(world.getBlockState(pos.above()).getBlock());
     }
 
     @Nonnull

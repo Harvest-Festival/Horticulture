@@ -12,7 +12,7 @@ public class HorticultureLanguage extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add("itemGroup.horticulture.creativetab", "Horticulture");
+        add("itemGroup.horticulture", "Horticulture");
         addItem(HorticultureItems.TURNIP, "Turnip");
         addItem(HorticultureItems.CUCUMBER, "Cucumber");
         addItem(HorticultureItems.STRAWBERRY, "Strawberry");

@@ -3,6 +3,7 @@ package uk.joshiejack.horticulture.data;
 import net.minecraft.block.Block;
 import net.minecraft.block.CropsBlock;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -13,6 +14,7 @@ import uk.joshiejack.horticulture.Horticulture;
 import uk.joshiejack.horticulture.block.FruitBlock;
 import uk.joshiejack.horticulture.block.FruitTreeLeavesBlock;
 import uk.joshiejack.horticulture.block.HorticultureBlocks;
+import uk.joshiejack.horticulture.block.SeedMakerBlock;
 
 @SuppressWarnings("ConstantConditions")
 public class HorticultureBlockStates extends BlockStateProvider {
@@ -44,7 +46,6 @@ public class HorticultureBlockStates extends BlockStateProvider {
         buildSaplings(HorticultureBlocks.ORANGE_SAPLING.get());
         model(HorticultureBlocks.OLD_SPRINKLER.get());
         model(HorticultureBlocks.IRON_SPRINKLER.get());
-        model(HorticultureBlocks.SEED_MAKER.get());
         mushroomLogs(HorticultureBlocks.OAK_STUMP.get());
         mushroomLogs(HorticultureBlocks.SPRUCE_STUMP.get());
         mushroomLogs(HorticultureBlocks.BIRCH_STUMP.get());
@@ -57,6 +58,12 @@ public class HorticultureBlockStates extends BlockStateProvider {
         leaves(HorticultureBlocks.ORANGE_LEAVES.get());
         leaves(HorticultureBlocks.APPLE_LEAVES.get());
         leaves(HorticultureBlocks.BANANA_LEAVES.get());
+        ModelFile file = models().getExistingFile(HorticultureBlocks.SEED_MAKER.get().getRegistryName());
+        VariantBlockStateBuilder builder = getVariantBuilder(HorticultureBlocks.SEED_MAKER.get());
+        builder.partialState().with(SeedMakerBlock.FACING, Direction.EAST).modelForState().modelFile(file).rotationY(90).addModel();
+        builder.partialState().with(SeedMakerBlock.FACING, Direction.WEST).modelForState().modelFile(file).rotationY(270).addModel();
+        builder.partialState().with(SeedMakerBlock.FACING, Direction.NORTH).modelForState().modelFile(file).rotationY(0).addModel();
+        builder.partialState().with(SeedMakerBlock.FACING, Direction.SOUTH).modelForState().modelFile(file).rotationY(180).addModel();
     }
 
     protected void leaves(Block block) {

@@ -4,13 +4,16 @@
       "model": "horticulture:block/seed_maker"
     },
     "facing=south": {
-      "model": "horticulture:block/seed_maker"
+      "model": "horticulture:block/seed_maker",
+      "y": 180
     },
     "facing=west": {
-      "model": "horticulture:block/seed_maker"
+      "model": "horticulture:block/seed_maker",
+      "y": 270
     },
     "facing=east": {
-      "model": "horticulture:block/seed_maker"
+      "model": "horticulture:block/seed_maker",
+      "y": 90
     }
   }
 }

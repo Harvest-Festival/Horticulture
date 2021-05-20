@@ -1,6 +1,7 @@
 modLoader="javafml"
 loaderVersion="[36,)"
 license="MIT"
+credits="Seed maker sound by le_abbaye_Noirlac on freesound.org"
 [[mods]]
     modId="horticulture"
     version="${mod_version}"

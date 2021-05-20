@@ -1,0 +1,8 @@
+{
+  "seed_maker": {
+    "category": "block",
+    "sounds": [
+      "horticulture:seed_maker"
+    ]
+  }
+}

@@ -17,6 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.FoliageColors;
 import net.minecraft.world.biome.BiomeColors;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -35,6 +36,7 @@ import uk.joshiejack.horticulture.tileentity.HorticultureTileEntities;
 
 import java.util.Map;
 
+@OnlyIn(Dist.CLIENT)
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Horticulture.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class HorticultureClient {
     @SubscribeEvent
@@ -104,20 +106,25 @@ public class HorticultureClient {
 
     @SubscribeEvent
     public static void onStitch(TextureStitchEvent.Pre event) {
-        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/apple_solid"));
-        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/orange_solid"));
-        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/peach_solid"));
-        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/apple_fast"));
-        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/orange_fast"));
-        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/peach_fast"));
+        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/apple_fast_empty"));
+        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/orange_fast_empty"));
+        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/peach_fast_empty"));
+        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/banana_fast_empty"));
+        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/apple_fast_flowering"));
+        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/orange_fast_flowering"));
+        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/peach_fast_flowering"));
+        event.addSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/banana_fast_flowering"));
     }
 
     private static void replaceLeavesModel(Map<ResourceLocation, IBakedModel> registry, String block, IBakedModel model) {
-        registry.put(new ModelResourceLocation("horticulture:" + block + "#inventory"), model);
-        for (int distance = 0; distance <= 7; distance++) {
-            for (int season = 0; season <= 1; season++) {
-                for (int persistent = 0; persistent <= 1; persistent++) {
-                    registry.put(new ModelResourceLocation("horticulture:" + block + "#distance=" + distance + ",in_season=" + (season == 1) + ",persistent=" + (persistent == 1)), model);
+        IBakedModel existing = registry.get(new ModelResourceLocation("horticulture:" + block + "#inventory"));
+        if (!(existing instanceof FruitLeavesBakedModel)) {
+            registry.put(new ModelResourceLocation("horticulture:" + block + "#inventory"), model);
+            for (int distance = 0; distance <= 7; distance++) {
+                for (int season = 0; season <= 1; season++) {
+                    for (int persistent = 0; persistent <= 1; persistent++) {
+                        registry.put(new ModelResourceLocation("horticulture:" + block + "#distance=" + distance + ",in_season=" + (season == 1) + ",persistent=" + (persistent == 1)), model);
+                    }
                 }
             }
         }
@@ -127,7 +134,8 @@ public class HorticultureClient {
         for (BlockState blockState : stump.getStateDefinition().getPossibleStates()) {
             ModelResourceLocation mrl = BlockModelShapes.stateToModelLocation(blockState);
             IBakedModel existingModel = registry.get(mrl);
-            registry.put(mrl, new StumpBakedModel(existingModel));
+            if (!(existingModel instanceof StumpBakedModel))
+                registry.put(mrl, new StumpBakedModel(existingModel));
         }
     }
 
@@ -135,22 +143,28 @@ public class HorticultureClient {
     public static void onBaking(ModelBakeEvent event) {
         Map<ResourceLocation, IBakedModel> registry = event.getModelRegistry();
         IBakedModel oakLeaves = event.getModelManager().getModel(new ModelResourceLocation("minecraft:oak_leaves#inventory"));
+        IBakedModel jungleLeaves = event.getModelManager().getModel(new ModelResourceLocation("minecraft:jungle_leaves#inventory"));
         IBakedModel appleLeaves = event.getModelManager().getModel(new ModelResourceLocation("horticulture:apple_leaves#inventory"));
         IBakedModel orangeLeaves = event.getModelManager().getModel(new ModelResourceLocation("horticulture:orange_leaves#inventory"));
         IBakedModel peachLeaves = event.getModelManager().getModel(new ModelResourceLocation("horticulture:peach_leaves#inventory"));
+        IBakedModel bananaLeaves = event.getModelManager().getModel(new ModelResourceLocation("horticulture:banana_leaves#inventory"));
         AtlasTexture textureGetter = Minecraft.getInstance().getModelManager().getAtlas(PlayerContainer.BLOCK_ATLAS);
-        TextureAtlasSprite appleSolid = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/apple_solid"));
-        TextureAtlasSprite orangeSolid = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/orange_solid"));
-        TextureAtlasSprite peachSolid = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/peach_solid"));
-        TextureAtlasSprite appleEmpty = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/apple_fast"));
-        TextureAtlasSprite orangeEmpty = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/orange_fast"));
-        TextureAtlasSprite peachEmpty = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/peach_fast"));
-        FruitLeavesBakedModel appleModel = new FruitLeavesBakedModel(appleLeaves, oakLeaves, appleSolid, appleEmpty);
-        FruitLeavesBakedModel orangeModel = new FruitLeavesBakedModel(orangeLeaves, oakLeaves, orangeSolid, orangeEmpty);
-        FruitLeavesBakedModel peachModel = new FruitLeavesBakedModel(peachLeaves, oakLeaves, peachSolid, peachEmpty);
+        TextureAtlasSprite appleEmpty = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/apple_fast_empty"));
+        TextureAtlasSprite orangeEmpty = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/orange_fast_empty"));
+        TextureAtlasSprite peachEmpty = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/peach_fast_empty"));
+        TextureAtlasSprite bananaEmpty = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/banana_fast_empty"));
+        TextureAtlasSprite appleFlowering = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/apple_fast_flowering"));
+        TextureAtlasSprite orangeFlowering = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/orange_fast_flowering"));
+        TextureAtlasSprite peachFlowering = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/peach_fast_flowering"));
+        TextureAtlasSprite bananaFlowering = textureGetter.getSprite(new ResourceLocation(Horticulture.MODID, "block/leaves/banana_fast_flowering"));
+        FruitLeavesBakedModel appleModel = new FruitLeavesBakedModel(appleLeaves, oakLeaves, appleFlowering, appleEmpty);
+        FruitLeavesBakedModel orangeModel = new FruitLeavesBakedModel(orangeLeaves, oakLeaves, orangeFlowering, orangeEmpty);
+        FruitLeavesBakedModel peachModel = new FruitLeavesBakedModel(peachLeaves, oakLeaves, peachFlowering, peachEmpty);
+        FruitLeavesBakedModel bananaModel = new FruitLeavesBakedModel(bananaLeaves, jungleLeaves, bananaFlowering, bananaEmpty);
         replaceLeavesModel(registry, "apple_leaves", appleModel);
         replaceLeavesModel(registry, "orange_leaves", orangeModel);
         replaceLeavesModel(registry, "peach_leaves", peachModel);
+        replaceLeavesModel(registry, "banana_leaves", bananaModel);
         replaceStumpModel(registry, HorticultureBlocks.OAK_STUMP.get());
         replaceStumpModel(registry, HorticultureBlocks.SPRUCE_STUMP.get());
         replaceStumpModel(registry, HorticultureBlocks.BIRCH_STUMP.get());

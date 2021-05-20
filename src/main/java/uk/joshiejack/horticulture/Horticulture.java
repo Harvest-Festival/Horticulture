@@ -4,13 +4,18 @@ import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 import uk.joshiejack.horticulture.block.HorticultureBlocks;
 import uk.joshiejack.horticulture.crafting.HorticultureRegistries;
 import uk.joshiejack.horticulture.data.*;
@@ -34,6 +39,7 @@ public class Horticulture {
 
     public Horticulture() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        HorticultureSounds.SOUNDS.register(eventBus);
         HorticultureBlocks.BLOCKS.register(eventBus);
         HorticultureItems.ITEMS.register(eventBus);
         HorticultureRegistries.SERIALIZERS.register(eventBus);
@@ -57,6 +63,15 @@ public class Horticulture {
         if (event.includeClient()) {
             generator.addProvider(new HorticultureLanguage(generator));
             generator.addProvider(new HorticultureItemModels(generator, event.getExistingFileHelper()));
+        }
+    }
+
+    public static class HorticultureSounds {
+        public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Horticulture.MODID);
+        public static final RegistryObject<SoundEvent> SEED_MAKER = createSoundEvent("seed_maker");
+
+        private static RegistryObject<SoundEvent> createSoundEvent(@Nonnull String name) {
+            return SOUNDS.register(name, () -> new SoundEvent(new ResourceLocation(Horticulture.MODID, name)));
         }
     }
 }

@@ -66,7 +66,7 @@ public class HorticultureBlocks {
 
     private static Boolean canPlaceTropicalFruit(BlockState state, IBlockReader reader, BlockPos pos, RegistryObject<Block> block) {
         for (Direction facing: Direction.Plane.HORIZONTAL) {
-            if (BlockTags.LOGS.contains(reader.getBlockState(pos.offset(facing.getNormal())).getBlock())) return true;
+            if (BlockTags.LOGS.contains(reader.getBlockState(pos.relative(facing)).getBlock())) return true;
         }
 
         return false;

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "entries": [
-    "horticulture:grass_seed_drops"
+    "horticulture:grass_seed_drops",
+    "horticulture:tall_grass_seed_drops"
   ]
 }
