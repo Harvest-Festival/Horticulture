@@ -29,7 +29,7 @@ repositories {
     }
 }
 
-version = mod_version
+version = "${minecraft_version}-${mod_version}"
 group = 'uk.joshiejack.horticulture' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Horticulture'
 
