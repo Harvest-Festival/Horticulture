@@ -44,8 +44,7 @@ public class AppleTreeTrunkPlacer extends AbstractTrunkPlacer {
     @Override
     public List<FoliagePlacer.Foliage> placeTrunk(@Nonnull IWorldGenerationReader reader, @Nonnull Random random, int trunkHeight,
                                                   @Nonnull BlockPos target, @Nonnull Set<BlockPos> trunkBlocks, @Nonnull MutableBoundingBox bounding, @Nonnull BaseTreeFeatureConfig config) {
-        int width = 3 + random.nextInt(3);
-        boolean upper = random.nextBoolean();
+        int width = random.nextInt(3);
         if (trunkHeight %2 == 0) {
             placeBranches(reader, random, target.above(trunkHeight).below(trunkHeight %4 == 0 ? 1 : 0), trunkBlocks, bounding, config, width, Direction.NORTH);
             placeBranches(reader, random, target.above(trunkHeight).below(trunkHeight %4 == 0 ? 0 : 1), trunkBlocks, bounding, config, width, Direction.SOUTH);

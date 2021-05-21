@@ -33,7 +33,7 @@ public class AppleTreeFoliagePlacer extends BlobFoliagePlacer {
     protected void createFoliage(@Nonnull IWorldGenerationReader world, @Nonnull Random random, @Nonnull BaseTreeFeatureConfig config,
                                  int trunkHeight, @Nonnull Foliage foliage, int foliageHeight, int radius, @Nonnull Set<BlockPos> leaves, int offset, @Nonnull MutableBoundingBox boundingBox) {
         placeLeavesRow(world, random, config, foliage.foliagePos(), 2, leaves, foliageHeight + 1, foliage.doubleTrunk(), boundingBox);
-        int width = 3 + random.nextInt(2);
+        int width = random.nextInt(3);
         if (trunkHeight %2 == 0) {
             for (int i = -3; i <= 1; i++) {
                 int j = Math.max(radius + foliage.radiusOffset() - 1 - i / 2, 1);
