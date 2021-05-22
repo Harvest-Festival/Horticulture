@@ -7,6 +7,8 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
 import uk.joshiejack.horticulture.Horticulture;
@@ -46,9 +48,24 @@ public abstract class AbstractSprinklerTileEntity extends TileEntity implements 
                     level.addParticle(ParticleTypes.SPLASH, worldPosition.getX() + 0.5D, worldPosition.getY() + height, worldPosition.getZ() + 0.5D, one + 0.05D, 0D, two + 0.05D);
                 }
             } else {
-                for (BlockPos position: BlockPos.betweenClosed(worldPosition.offset(-range, -2, -range), worldPosition.offset(range, 0, range))) {
-                    if (!position.equals(worldPosition))
-                        HorticultureItems.WATERING_CAN.get().water(FakePlayerHelper.getFakePlayerWithPosition((ServerWorld)level, position), level, position, ItemStack.EMPTY, Hand.MAIN_HAND);
+                boolean soundPlayed = false;
+                for (BlockPos position : BlockPos.betweenClosed(worldPosition.offset(-range, -2, -range), worldPosition.offset(range, 0, range))) {
+                    if (!position.equals(worldPosition)) {
+                        if (level.dimensionType().ultraWarm()) {
+                            int x = position.getX();
+                            int y = position.getY();
+                            int z = position.getZ();
+                            if (!soundPlayed) {
+                                level.playSound(null, position, SoundEvents.FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
+                                soundPlayed = true;
+                            }
+
+                            for (int l = 0; l < 8; ++l) {
+                                level.addParticle(ParticleTypes.LARGE_SMOKE, (double) x + Math.random(), (double) y + Math.random(), (double) z + Math.random(), 0.0D, 0.0D, 0.0D);
+                            }
+                        } else
+                            HorticultureItems.WATERING_CAN.get().water(FakePlayerHelper.getFakePlayerWithPosition((ServerWorld) level, position), level, position, ItemStack.EMPTY, Hand.MAIN_HAND);
+                    }
                 }
             }
         }
