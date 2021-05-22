@@ -13,5 +13,7 @@ public class HorticultureBlockTags extends BlockTagsProvider {
     }
 
     @Override
-    protected void addTags() {}
+    protected void addTags() {
+
+    }
 }

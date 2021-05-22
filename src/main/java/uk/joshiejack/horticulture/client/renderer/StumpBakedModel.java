@@ -70,7 +70,7 @@ public class StumpBakedModel extends BakedModelWrapper<IBakedModel> {
             Map<Direction, List<BakedQuad>> map = models.get(mushroom);
             if (!map.containsKey(side)) {
                 List<BakedQuad> quads = Lists.newArrayList(super.getQuads(state, side, random)); //Grab the base stump model
-                TextureAtlasSprite texture = Minecraft.getInstance().getBlockRenderer().getBlockModel(state).getParticleTexture(EmptyModelData.INSTANCE);
+                TextureAtlasSprite texture = Minecraft.getInstance().getBlockRenderer().getBlockModel(mushroom).getParticleTexture(EmptyModelData.INSTANCE);
                 getMushroomMode(stage).getQuads(state, side, random, data).forEach(quad -> quads.add(BakedModelHelper.retexture(quad, texture)));
                 map.put(side, ImmutableList.copyOf(quads));
             }
