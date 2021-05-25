@@ -4,25 +4,25 @@ license="MIT"
 credits="Seed maker sound by le_abbaye_Noirlac on freesound.org"
 [[mods]]
     modId="horticulture"
-    version="${mod_version}"
+    version="${file.jarVersion}"
     displayName="Horticulture"
     authors="joshiejack"
     description='''Crops and Trees!'''
 [[dependencies.horticulture]]
     modId="forge"
     mandatory=true
-    versionRange="${forge_range}"
+    versionRange="[36,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.horticulture]]
     modId="minecraft"
     mandatory=true
-    versionRange="${minecraft_range}"
+    versionRange="[1.16.5,1.17)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.horticulture]]
     modId="penguinlib"
     mandatory=true
-    versionRange="${penguinlib_range}"
+    versionRange="[1.16.5-0.1.2,)"
     ordering="NONE"
     side="BOTH"

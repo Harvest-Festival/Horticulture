@@ -27,6 +27,10 @@ repositories {
         name 'DVS1 Maven FS'
         url 'https://dvs1.progwml6.com/files/maven'
     }
+    maven { //PenguinLib
+        name 'Joshiejack'
+        url 'https://maven.joshiejack.uk/'
+    }
 }
 
 version = "${minecraft_version}-${mod_version}"
@@ -92,51 +96,6 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
 }
 
-// process mods.toml to inject variables
-def modsTomlSpec = copySpec{
-    from(sourceSets.main.resources) {
-        include 'META-INF/mods.toml'
-        expand  'mod_version': mod_version,
-                'loader_range': loader_range,
-                'minecraft_range': minecraft_range,
-                'forge_range': forge_range,
-                'penguinlib_version': penguinlib_version,
-                'penguinlib_range': penguinlib_range
-    }
-}
-// need to copy into each build directory, unfortunately does not seem easy to do this automatically
-def buildPaths = [
-        "$rootDir/out/production/resources", // IDEA
-        "$rootDir/bin", // Eclipse
-]
-
-// task to add mods.toml to all relevant folders
-task replaceResources {
-    // ensure directory exists, first build likes to fail
-    new File("${processResources.destinationDir}/META-INF").mkdirs()
-    // copy for gradle
-    copy {
-        outputs.upToDateWhen { false }
-        with modsTomlSpec
-        into processResources.destinationDir
-    }
-    // copy for IDEs
-    buildPaths.each { path ->
-        if (new File(path).exists()) {
-            copy {
-                outputs.upToDateWhen { false }
-                with modsTomlSpec
-                into path
-            }
-        }
-    }
-}
-
-processResources {
-    exclude 'META-INF/mods.toml'
-    finalizedBy replaceResources
-}
-
 jar {
     manifest {
         attributes([
@@ -158,12 +117,15 @@ jar.finalizedBy('reobfJar')
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            artifactId 'Horticulture'
             artifact jar
         }
     }
     repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
-        }
+      if (project.hasProperty('mavenRepository')) {
+          maven { url mavenRepository }
+      } else {
+          mavenLocal()
+      }
     }
 }
