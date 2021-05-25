@@ -22,4 +22,5 @@ dependencies {
 }
 ```
 
-`${minecraft_version}` & `${horticulture_version}` can be found [here](https://maven.joshiejack.uk/uk/joshiejack/horticulture/Horticulture/)
+`${$penguinlib_version}` can be found [here](https://maven.joshiejack.uk/uk/joshiejack/penguinlib/PenguinLib/)
+`${horticulture_version}` can be found [here](https://maven.joshiejack.uk/uk/joshiejack/horticulture/Horticulture/)
