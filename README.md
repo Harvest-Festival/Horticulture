@@ -12,15 +12,14 @@ Add to your build.gradle:
 ```gradle
 repositories {
   maven {
-    //Horticulture
-    url //TODO
+    url 'https://maven.joshiejack.uk/'
   }
 }
 
 dependencies {
-  // compile against Horticulture
-  deobfCompile "uk.joshiejack.horticulture:Horticulture:${minecraft_version}-${horticulture_version}"
+    compile fg.deobf("uk.joshiejack.penguinlib:Penguin-Lib:${minecraft_version}-${penguinlib_version}")
+    compile fg.deobf("uk.joshiejack.horticulture:Horticulture:${minecraft_version}-${horticulture_version}")
 }
 ```
 
-`${minecraft_version}` & `${horticulture_version}` can be found //TODO, check the file name of the version you want.
+`${minecraft_version}` & `${horticulture_version}` can be found [here](https://maven.joshiejack.uk/uk/joshiejack/horticulture/Horticulture/)
