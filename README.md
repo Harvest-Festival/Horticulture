@@ -22,5 +22,5 @@ dependencies {
 }
 ```
 
-`${$penguinlib_version}` can be found [here](https://maven.joshiejack.uk/uk/joshiejack/penguinlib/PenguinLib/)
+`${$penguinlib_version}` can be found [here](https://maven.joshiejack.uk/uk/joshiejack/penguinlib/Penguin-Lib/)
 `${horticulture_version}` can be found [here](https://maven.joshiejack.uk/uk/joshiejack/horticulture/Horticulture/)
