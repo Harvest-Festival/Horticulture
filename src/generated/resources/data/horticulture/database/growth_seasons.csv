@@ -1,0 +1,25 @@
+Block,Season Predicate
+horticulture:apple_fruit,autumn
+horticulture:apple_leaves,autumn
+horticulture:apple_sapling,not_winter
+horticulture:banana_fruit,summer
+horticulture:banana_leaves,summer
+horticulture:banana_sapling,not_winter
+horticulture:cabbages,spring
+horticulture:corn,summer
+horticulture:cucumbers,spring
+horticulture:eggplants,autumn
+horticulture:green_peppers,autumn
+horticulture:onions,summer
+horticulture:orange_fruit,summer
+horticulture:orange_leaves,summer
+horticulture:orange_sapling,not_winter
+horticulture:peach_fruit,summer
+horticulture:peach_leaves,summer
+horticulture:peach_sapling,not_winter
+horticulture:pineapples,summer
+horticulture:spinach,autumn
+horticulture:strawberries,spring
+horticulture:sweet_potatoes,autumn
+horticulture:tomatoes,summer
+horticulture:turnips,spring

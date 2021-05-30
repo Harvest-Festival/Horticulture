@@ -18,6 +18,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ForgeHooks;
 
 import javax.annotation.Nonnull;
 import java.util.Random;
@@ -68,8 +69,13 @@ public class FruitBlock extends BushBlock implements IGrowable {
 
     @Override
     public void randomTick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos pos, @Nonnull Random rand) {
-        if (world.random.nextDouble() <= 0.1F) {
-            super.randomTick(state, world, pos, rand);
+        if (!world.isAreaLoaded(pos, 1))
+            return;
+        if (isValidBonemealTarget(world, pos, state, false)) {
+            if (ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextFloat() <= 0.1F)) {
+                performBonemeal(world, rand, pos, state);
+                ForgeHooks.onCropsGrowPost(world, pos, state);
+            }
         }
     }
 

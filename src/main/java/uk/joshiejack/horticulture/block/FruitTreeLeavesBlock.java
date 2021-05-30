@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.fml.RegistryObject;
 
 import javax.annotation.Nonnull;
@@ -36,8 +37,12 @@ public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
             dropResources(state, world, pos);
             world.removeBlock(pos, false);
             world.updateNeighborsAt(pos, Blocks.AIR);
-        } else if (state.getValue(IN_SEASON))
-            performBonemeal(world, rand, pos, state);
+        } else if (state.getValue(IN_SEASON)) {
+            if (ForgeHooks.onCropsGrowPre(world, pos, state, true)) {
+                performBonemeal(world, rand, pos, state);
+                ForgeHooks.onCropsGrowPost(world, pos, state);
+            }
+        }
     }
 
     @Override
@@ -53,7 +58,7 @@ public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
     @Override
     public void performBonemeal(@Nonnull ServerWorld worldIn, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
         if (!state.getValue(BlockStateProperties.PERSISTENT) && predicate.test(state, worldIn, pos.below(), block)
-                && worldIn.getBlockState(pos.below()).isAir() && worldIn.getBlockState(pos.below(2)).isAir()) {
+                && worldIn.getBlockState(pos.below()).isAir()) {
             worldIn.setBlock(pos.below(), this.block.get().defaultBlockState(), 2);
         }
     }

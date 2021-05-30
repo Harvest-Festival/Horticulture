@@ -21,7 +21,6 @@ import uk.joshiejack.horticulture.tileentity.StumpTileEntity;
 @SuppressWarnings("unused")
 public class HorticultureBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Horticulture.MODID);
-
     public static final RegistryObject<CropBlock> TURNIPS = BLOCKS.register("turnips", () -> new CropBlock(3));
     public static final RegistryObject<CropBlock> CUCUMBERS = BLOCKS.register("cucumbers", () -> new CropBlock(4, 2));
     public static final RegistryObject<CropBlock> STRAWBERRIES = BLOCKS.register("strawberries", () -> new CropBlock(4, 2));
@@ -38,7 +37,6 @@ public class HorticultureBlocks {
     public static final RegistryObject<Block> BANANA_SAPLING = BLOCKS.register("banana_sapling", () -> new SaplingBlock(new BananaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> ORANGE_SAPLING = BLOCKS.register("orange_sapling", () -> new SaplingBlock(new OrangeTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> PEACH_SAPLING = BLOCKS.register("peach_sapling", () -> new SaplingBlock(new PeachTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
-
     public static final RegistryObject<Block> BANANA_FRUIT = BLOCKS.register("banana_fruit", FruitBlock::new);
     public static final RegistryObject<Block> ORANGE_FRUIT = BLOCKS.register("orange_fruit", FruitBlock::new);
     public static final RegistryObject<Block> APPLE_FRUIT = BLOCKS.register("apple_fruit", FruitBlock::new);
@@ -60,7 +58,7 @@ public class HorticultureBlocks {
     public static final RegistryObject<Block> WARPED_STUMP = BLOCKS.register("warped_stump", () -> new StumpBlock(Blocks.WARPED_STEM, NetherStumpTileEntity::new));
 
     private static Boolean canPlaceTemperateFruit(BlockState state, IBlockReader reader, BlockPos pos, RegistryObject<Block> block) {
-        return BlockPos.betweenClosedStream(pos.offset(-1, -1, -1), pos.offset(1, 1, 1))
+        return BlockPos.betweenClosedStream(pos.offset(-1, 0, -1), pos.offset(1, 0, 1))
                 .noneMatch(target -> reader.getBlockState(target).getBlock() == block.get());
     }
 
