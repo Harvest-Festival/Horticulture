@@ -32,13 +32,18 @@ public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
     }
 
     @Override
+    public boolean isRandomlyTicking(BlockState state) {
+        return (state.getValue(DISTANCE) == 7 && !state.getValue(PERSISTENT)) || state.getValue(IN_SEASON);
+    }
+
+    @Override
     public void randomTick(@Nonnull BlockState state, @Nonnull ServerWorld world, @Nonnull BlockPos pos, @Nonnull Random rand) {
         if (!state.getValue(PERSISTENT) && state.getValue(DISTANCE) == 7) {
             dropResources(state, world, pos);
             world.removeBlock(pos, false);
             world.updateNeighborsAt(pos, Blocks.AIR);
         } else if (state.getValue(IN_SEASON)) {
-            if (ForgeHooks.onCropsGrowPre(world, pos, state, true)) {
+            if (ForgeHooks.onCropsGrowPre(world, pos, state, rand.nextFloat() <= 0.2F)) {
                 performBonemeal(world, rand, pos, state);
                 ForgeHooks.onCropsGrowPost(world, pos, state);
             }
@@ -58,8 +63,8 @@ public class FruitTreeLeavesBlock extends LeavesBlock implements IGrowable {
     @Override
     public void performBonemeal(@Nonnull ServerWorld worldIn, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
         if (!state.getValue(BlockStateProperties.PERSISTENT) && predicate.test(state, worldIn, pos.below(), block)
-                && worldIn.getBlockState(pos.below()).isAir()) {
-            worldIn.setBlock(pos.below(), this.block.get().defaultBlockState(), 2);
+                && worldIn.getBlockState(pos.below()).isAir(worldIn, pos.below())) {
+            worldIn.setBlock(pos.below(), this.block.get().defaultBlockState(), 3);
         }
     }
 
