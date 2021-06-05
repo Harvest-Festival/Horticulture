@@ -8,6 +8,7 @@ import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.ResourceLocation;
+import uk.joshiejack.horticulture.crafting.HorticultureRegistries;
 import uk.joshiejack.penguinlib.data.generators.builders.SimplePenguinRecipeBuilder;
 
 public class StumpRecipeBuilder extends SimplePenguinRecipeBuilder {
@@ -16,6 +17,10 @@ public class StumpRecipeBuilder extends SimplePenguinRecipeBuilder {
     public StumpRecipeBuilder(IRecipeSerializer<?> serializer, Ingredient ingredient, IItemProvider provider, int maxGrowths) {
         super(serializer, ingredient, provider, 1);
         this.maxGrowths = maxGrowths;
+    }
+
+    public static StumpRecipeBuilder stump(Ingredient input, IItemProvider output, int growths) {
+        return new StumpRecipeBuilder(HorticultureRegistries.STUMP_SERIALIZER.get(), input, output, growths);
     }
 
     @Override

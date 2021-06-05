@@ -20,7 +20,4 @@ public class StumpRecipe extends AbstractStumpRecipe {
         return new ItemStack(HorticultureBlocks.OAK_STUMP.get());
     }
 
-    public static StumpRecipeBuilder stump(Ingredient input, IItemProvider output, int growths) {
-        return new StumpRecipeBuilder(HorticultureRegistries.STUMP_SERIALIZER.get(), input, output, growths);
-    }
 }

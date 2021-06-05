@@ -16,7 +16,7 @@ import uk.joshiejack.horticulture.Horticulture;
 import uk.joshiejack.horticulture.block.HorticultureBlocks;
 import uk.joshiejack.horticulture.crafting.NetherStumpRecipe;
 import uk.joshiejack.horticulture.crafting.SeedMakerRecipe;
-import uk.joshiejack.horticulture.crafting.StumpRecipe;
+import uk.joshiejack.horticulture.data.builders.StumpRecipeBuilder;
 import uk.joshiejack.horticulture.item.HorticultureItems;
 import uk.joshiejack.horticulture.item.HorticultureTags;
 import uk.joshiejack.penguinlib.item.PenguinItems;
@@ -58,8 +58,8 @@ public class HorticultureRecipes extends RecipeProvider {
                 HorticultureItems.CORN.get(), HorticultureItems.PINEAPPLE.get(), HorticultureItems.EGGPLANT.get(), HorticultureItems.SPINACH.get()
                 , HorticultureItems.SWEET_POTATO.get(), HorticultureItems.GREEN_PEPPER.get(), Items.WHEAT, Items.BEETROOT);
         addSporesRecipe(consumer, Items.BROWN_MUSHROOM, Items.RED_MUSHROOM, Items.CRIMSON_FUNGUS, Items.WARPED_FUNGUS);
-        StumpRecipe.stump(Ingredient.of(HorticultureItems.BROWN_MUSHROOM_SPORES.get()), Items.BROWN_MUSHROOM, 50).unlocks("has_stump", has(HorticultureItemTags.STUMPS)).save(consumer, rl("brown_mushroom"));
-        StumpRecipe.stump(Ingredient.of(HorticultureItems.RED_MUSHROOM_SPORES.get()), Items.RED_MUSHROOM, 30).unlocks("has_stump", has(HorticultureItemTags.STUMPS)).save(consumer, rl("red_mushroom"));
+        StumpRecipeBuilder.stump(Ingredient.of(HorticultureItems.BROWN_MUSHROOM_SPORES.get()), Items.BROWN_MUSHROOM, 50).unlocks("has_stump", has(HorticultureItemTags.STUMPS)).save(consumer, rl("brown_mushroom"));
+        StumpRecipeBuilder.stump(Ingredient.of(HorticultureItems.RED_MUSHROOM_SPORES.get()), Items.RED_MUSHROOM, 30).unlocks("has_stump", has(HorticultureItemTags.STUMPS)).save(consumer, rl("red_mushroom"));
         NetherStumpRecipe.stump(Ingredient.of(HorticultureItems.WARPED_FUNGUS_SPORES.get()), Items.WARPED_FUNGUS, 25).unlocks("has_nether_stump", has(HorticultureItemTags.NETHER_STUMP)).save(consumer, rl("warped_fungus"));
         NetherStumpRecipe.stump(Ingredient.of(HorticultureItems.CRIMSON_FUNGUS_SPORES.get()), Items.CRIMSON_FUNGUS, 15).unlocks("has_nether_stump", has(HorticultureItemTags.NETHER_STUMP)).save(consumer, rl("crimson_fungus"));
         ShapelessRecipeBuilder.shapeless(HorticultureItems.PINEAPPLE_JUICE.get(), 1).requires(HorticultureTags.PINEAPPLE).requires(PenguinItems.GLASS.get()).unlockedBy("has_pineapple", has(HorticultureTags.PINEAPPLE)).save(consumer, rl("pineapple_juice"));
