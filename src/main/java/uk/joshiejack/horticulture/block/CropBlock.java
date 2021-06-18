@@ -43,7 +43,7 @@ public class CropBlock extends CropsBlock {
                 : AGE;
         return properties;
     }
-
+    
     @Override
     public int getMaxAge() {
         return maxAge;
