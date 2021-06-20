@@ -77,13 +77,13 @@ public class HorticultureLanguage extends LanguageProvider {
         addItem(HorticultureItems.SEED_MAKER, "Seed Maker");
         addItem(HorticultureItems.OLD_SPRINKLER, "Old Sprinkler");
         addItem(HorticultureItems.IRON_SPRINKLER, "Iron Sprinkler");
-        addItem(HorticultureItems.OAK_STUMP, "Oak Stump");
-        addItem(HorticultureItems.SPRUCE_STUMP, "Spruce Stump");
-        addItem(HorticultureItems.BIRCH_STUMP, "Birch Stump");
-        addItem(HorticultureItems.JUNGLE_STUMP, "Jungle Stump");
-        addItem(HorticultureItems.ACACIA_STUMP, "Acacia Stump");
-        addItem(HorticultureItems.DARK_OAK_STUMP, "Dark Oak Stump");
-        addItem(HorticultureItems.CRIMSON_STUMP, "Crimson Stump");
-        addItem(HorticultureItems.WARPED_STUMP, "Warped Stump");
+        addItem(HorticultureItems.OAK_STUMP, "Oak Mushroom Stump");
+        addItem(HorticultureItems.SPRUCE_STUMP, "Spruce Mushroom Stump");
+        addItem(HorticultureItems.BIRCH_STUMP, "Birch Mushroom Stump");
+        addItem(HorticultureItems.JUNGLE_STUMP, "Jungle Mushroom Stump");
+        addItem(HorticultureItems.ACACIA_STUMP, "Acacia Mushroom Stump");
+        addItem(HorticultureItems.DARK_OAK_STUMP, "Dark Oak Mushroom Stump");
+        addItem(HorticultureItems.CRIMSON_STUMP, "Crimson Fungus Stump");
+        addItem(HorticultureItems.WARPED_STUMP, "Warped Fungus Stump");
     }
 }
