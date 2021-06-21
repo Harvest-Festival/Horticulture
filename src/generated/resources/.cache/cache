@@ -364,6 +364,7 @@ ba4a9af3c507eb544de290014dc52465644fe8ff data/horticulture/recipes/tomato_seeds.
 133f970ce12b096aa6356088c577bff5bb58b710 data/horticulture/recipes/warped_stump.json
 01fcbfffcba3528776f6a72cc9342f2df4709c41 data/horticulture/recipes/watering_can.json
 832911242123f01622e00ad97ef80e509118f202 data/horticulture/recipes/wheat_seeds.json
+89c24a4e3125709273add6388c85c0dc5fe200da data/horticulture/tags/blocks/sprinkler_growable.json
 73ea83fc145f016f192b51b16434d33dcbbe471b data/horticulture/tags/items/nether_stump.json
 b6cbdeeceb9d8b05b648affc993528b6297d4346 data/horticulture/tags/items/stump.json
 4baa3746193cee80fbad2a7e38efc42723942187 data/minecraft/tags/items/saplings.json

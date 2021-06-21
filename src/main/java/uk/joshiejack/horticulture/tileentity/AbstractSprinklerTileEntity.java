@@ -1,23 +1,31 @@
 package uk.joshiejack.horticulture.tileentity;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.SaplingBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ITag;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.server.ServerWorld;
 import uk.joshiejack.horticulture.Horticulture;
+import uk.joshiejack.horticulture.block.CropBlock;
 import uk.joshiejack.horticulture.item.HorticultureItems;
 import uk.joshiejack.penguinlib.data.TimeUnitRegistry;
 import uk.joshiejack.penguinlib.util.helpers.minecraft.FakePlayerHelper;
 import uk.joshiejack.penguinlib.util.helpers.minecraft.TimeHelper;
 
 public abstract class AbstractSprinklerTileEntity extends TileEntity implements ITickableTileEntity {
+    public static final ITag.INamedTag<Block> SPRINKLER_GROWABLE = BlockTags.createOptional(new ResourceLocation(Horticulture.MODID, "sprinkler_growable"));
     public static final String START = Horticulture.MODID + ":sprinkler_start";
     public static final String FREQUENCY = Horticulture.MODID + ":sprinkler_frequency";
     public static final String FINISH = Horticulture.MODID + ":sprinkler_finish";
@@ -63,8 +71,11 @@ public abstract class AbstractSprinklerTileEntity extends TileEntity implements 
                             for (int l = 0; l < 8; ++l) {
                                 level.addParticle(ParticleTypes.LARGE_SMOKE, (double) x + Math.random(), (double) y + Math.random(), (double) z + Math.random(), 0.0D, 0.0D, 0.0D);
                             }
-                        } else
-                            HorticultureItems.WATERING_CAN.get().water(FakePlayerHelper.getFakePlayerWithPosition((ServerWorld) level, position), level, position, ItemStack.EMPTY, Hand.MAIN_HAND);
+                        } else {
+                            BlockState state = level.getBlockState(position);
+                            if (state.getBlock().is(SPRINKLER_GROWABLE) || state.getBlock() instanceof CropBlock || state.getBlock() instanceof SaplingBlock)
+                                HorticultureItems.WATERING_CAN.get().water(FakePlayerHelper.getFakePlayerWithPosition((ServerWorld) level, position), level, position, ItemStack.EMPTY, Hand.MAIN_HAND);
+                        }
                     }
                 }
             }
