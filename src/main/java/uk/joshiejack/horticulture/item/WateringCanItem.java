@@ -14,7 +14,7 @@ import uk.joshiejack.penguinlib.item.base.AbstractWateringCanItem;
 
 public class WateringCanItem extends AbstractWateringCanItem {
     public WateringCanItem() {
-        super(new Item.Properties().tab(Horticulture.TAB), 64);
+        super(new Item.Properties().stacksTo(1).tab(Horticulture.TAB), 64);
     }
 
     @Override
