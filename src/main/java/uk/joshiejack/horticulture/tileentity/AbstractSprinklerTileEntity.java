@@ -2,6 +2,7 @@ package uk.joshiejack.horticulture.tileentity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.FarmlandBlock;
 import net.minecraft.block.SaplingBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
@@ -73,7 +74,7 @@ public abstract class AbstractSprinklerTileEntity extends TileEntity implements 
                             }
                         } else {
                             BlockState state = level.getBlockState(position);
-                            if (state.getBlock().is(SPRINKLER_GROWABLE) || state.getBlock() instanceof CropBlock || state.getBlock() instanceof SaplingBlock)
+                            if (state.getBlock().is(SPRINKLER_GROWABLE) || state.getBlock() instanceof CropBlock || state.getBlock() instanceof SaplingBlock || state.getBlock() instanceof FarmlandBlock)
                                 HorticultureItems.WATERING_CAN.get().water(FakePlayerHelper.getFakePlayerWithPosition((ServerWorld) level, position), level, position, ItemStack.EMPTY, Hand.MAIN_HAND);
                         }
                     }
