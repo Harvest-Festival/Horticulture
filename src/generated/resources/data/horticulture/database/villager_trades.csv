@@ -1,4 +1,4 @@
 Profession,Tier,Input Item,Input Amount,Output Item,Output Amount,Max Trades,Experience,Price Multiplier
-minecraft:farmer,1,minecraft:emerald,3,horticulture:green_pepper_seeds,12,32,16,2.0
 minecraft:farmer,1,minecraft:emerald,5,horticulture:cabbage_seeds,8,32,16,2.0
 minecraft:farmer,1,minecraft:emerald,7,horticulture:pineapple_seeds,16,32,16,2.0
+minecraft:farmer,1,minecraft:emerald,3,horticulture:green_pepper_seeds,12,32,16,2.0

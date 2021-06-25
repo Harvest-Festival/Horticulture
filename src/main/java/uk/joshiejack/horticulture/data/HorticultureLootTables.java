@@ -13,6 +13,7 @@ import net.minecraft.item.Items;
 import net.minecraft.loot.*;
 import net.minecraft.loot.conditions.BlockStateProperty;
 import net.minecraft.loot.conditions.ILootCondition;
+import net.minecraft.loot.conditions.Inverted;
 import net.minecraft.loot.functions.SetCount;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -61,18 +62,19 @@ public class HorticultureLootTables extends LootTableProvider {
 
         @Override
         protected void addTables() {
-            addCrop(HorticultureBlocks.TURNIPS.get(), HorticultureItems.TURNIP.get());
-            addCrop(HorticultureBlocks.CUCUMBERS.get(), HorticultureItems.CUCUMBER.get());
-            addCrop(HorticultureBlocks.STRAWBERRIES.get(), HorticultureItems.STRAWBERRY.get());
-            addCrop(HorticultureBlocks.CABBAGES.get(), HorticultureItems.CABBAGE.get());
-            addCrop(HorticultureBlocks.ONIONS.get(), HorticultureItems.ONION.get());
-            addCrop(HorticultureBlocks.TOMATOES.get(), HorticultureItems.TOMATO.get());
-            addCrop(HorticultureBlocks.CORN.get(), HorticultureItems.CORN.get());
-            addCrop(HorticultureBlocks.PINEAPPLES.get(), HorticultureItems.PINEAPPLE.get());
-            addCrop(HorticultureBlocks.EGGPLANTS.get(), HorticultureItems.EGGPLANT.get());
-            addCrop(HorticultureBlocks.SPINACH.get(), HorticultureItems.SPINACH.get());
-            addCrop(HorticultureBlocks.SWEET_POTATOES.get(), HorticultureItems.SWEET_POTATO.get());
-            addCrop(HorticultureBlocks.GREEN_PEPPERS.get(), HorticultureItems.GREEN_PEPPER.get());
+
+            addCrop(HorticultureBlocks.TURNIPS.get(), HorticultureItems.TURNIP.get(), HorticultureItems.TURNIP_SEEDS.get());
+            addCrop(HorticultureBlocks.CUCUMBERS.get(), HorticultureItems.CUCUMBER.get(), HorticultureItems.CUCUMBER_SEEDS.get());
+            addCrop(HorticultureBlocks.STRAWBERRIES.get(), HorticultureItems.STRAWBERRY.get(), HorticultureItems.STRAWBERRY_SEEDS.get());
+            addCrop(HorticultureBlocks.CABBAGES.get(), HorticultureItems.CABBAGE.get(), HorticultureItems.CABBAGE_SEEDS.get());
+            addCrop(HorticultureBlocks.ONIONS.get(), HorticultureItems.ONION.get(), HorticultureItems.ONION_SEEDS.get());
+            addCrop(HorticultureBlocks.TOMATOES.get(), HorticultureItems.TOMATO.get(), HorticultureItems.TOMATO_SEEDS.get());
+            addCrop(HorticultureBlocks.CORN.get(), HorticultureItems.CORN.get(), HorticultureItems.CORN_SEEDS.get());
+            addCrop(HorticultureBlocks.PINEAPPLES.get(), HorticultureItems.PINEAPPLE.get(), HorticultureItems.PINEAPPLE_SEEDS.get());
+            addCrop(HorticultureBlocks.EGGPLANTS.get(), HorticultureItems.EGGPLANT.get(), HorticultureItems.EGGPLANT_SEEDS.get());
+            addCrop(HorticultureBlocks.SPINACH.get(), HorticultureItems.SPINACH.get(), HorticultureItems.SPINACH_SEEDS.get());
+            addCrop(HorticultureBlocks.SWEET_POTATOES.get(), HorticultureItems.SWEET_POTATO.get(), HorticultureItems.SWEET_POTATO_SEEDS.get());
+            addCrop(HorticultureBlocks.GREEN_PEPPERS.get(), HorticultureItems.GREEN_PEPPER.get(), HorticultureItems.GREEN_PEPPER_SEEDS.get());
             dropSelf(HorticultureBlocks.APPLE_SAPLING.get());
             dropSelf(HorticultureBlocks.BANANA_SAPLING.get());
             dropSelf(HorticultureBlocks.ORANGE_SAPLING.get());
@@ -98,9 +100,9 @@ public class HorticultureLootTables extends LootTableProvider {
             dropSelf(HorticultureBlocks.WARPED_STUMP.get());
         }
 
-        protected void addCrop(CropBlock block, Item item) {
+        protected void addCrop(CropBlock block, Item item, Item seeds) {
             ILootCondition.IBuilder grown = BlockStateProperty.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(block.getAgeProperty(), block.getMaxAge()));
-            add(block, applyExplosionDecay(block, LootTable.lootTable().withPool(LootPool.lootPool().when(grown).add(ItemLootEntry.lootTableItem(item)))));
+            add(block, applyExplosionDecay(block, LootTable.lootTable().withPool(LootPool.lootPool().when(grown).add(ItemLootEntry.lootTableItem(item)))).withPool(LootPool.lootPool().when(Inverted.invert(grown)).add(ItemLootEntry.lootTableItem(seeds))));
         }
 
         protected void addFruit(Block block, Item item) {

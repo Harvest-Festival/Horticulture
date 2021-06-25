@@ -18,6 +18,27 @@
           }
         }
       ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "horticulture:sweet_potato_seeds"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:block_state_property",
+            "block": "horticulture:sweet_potatoes",
+            "properties": {
+              "age": "2"
+            }
+          }
+        }
+      ]
     }
   ],
   "functions": [

@@ -18,6 +18,27 @@
           }
         }
       ]
+    },
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "horticulture:eggplant_seeds"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:block_state_property",
+            "block": "horticulture:eggplants",
+            "properties": {
+              "age": "3"
+            }
+          }
+        }
+      ]
     }
   ],
   "functions": [

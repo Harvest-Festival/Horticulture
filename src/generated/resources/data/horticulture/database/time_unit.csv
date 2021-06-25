@@ -1,5 +1,5 @@
 Name,Duration
-horticulture:seed_maker,500
-horticulture:sprinkler_finish,24000
-horticulture:sprinkler_frequency,100
 horticulture:sprinkler_start,0
+horticulture:sprinkler_frequency,100
+horticulture:sprinkler_finish,24000
+horticulture:seed_maker,500
