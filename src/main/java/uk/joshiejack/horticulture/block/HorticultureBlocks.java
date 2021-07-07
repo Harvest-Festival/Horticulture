@@ -22,7 +22,7 @@ import uk.joshiejack.horticulture.tileentity.StumpTileEntity;
 @SuppressWarnings("unused")
 public class HorticultureBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Horticulture.MODID);
-    public static final RegistryObject<CropBlock> TURNIPS = BLOCKS.register("turnips", () -> new CropBlock(3, HorticultureItems.CUCUMBER_SEEDS::get));
+    public static final RegistryObject<CropBlock> TURNIPS = BLOCKS.register("turnips", () -> new CropBlock(3, HorticultureItems.TURNIP_SEEDS::get));
     public static final RegistryObject<CropBlock> CUCUMBERS = BLOCKS.register("cucumbers", () -> new CropBlock(4, 2, HorticultureItems.CUCUMBER_SEEDS::get));
     public static final RegistryObject<CropBlock> STRAWBERRIES = BLOCKS.register("strawberries", () -> new CropBlock(4, 2, HorticultureItems.STRAWBERRY_SEEDS::get));
     public static final RegistryObject<CropBlock> CABBAGES = BLOCKS.register("cabbages", () -> new CropBlock(4, HorticultureItems.CABBAGE_SEEDS::get));
