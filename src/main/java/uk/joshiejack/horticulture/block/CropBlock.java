@@ -8,11 +8,13 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
 import javax.annotation.Nonnull;
+import java.util.function.Supplier;
 
 public class CropBlock extends CropsBlock {
     public static final IntegerProperty AGE_4 = IntegerProperty.create("age", 0, 4);
@@ -20,20 +22,28 @@ public class CropBlock extends CropsBlock {
     private final IntegerProperty property;
     private final int maxAge;
     private final int regrow;
+    private final Supplier<IItemProvider> supplier;
 
-    public CropBlock(int num) {
-        this(num, -1);
+    public CropBlock(int num, Supplier<IItemProvider> supplier) {
+        this(num, -1, supplier);
     }
 
-    public CropBlock(int num, int regrow) {
-        this(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), num, regrow);
+    public CropBlock(int num, int regrow, Supplier<IItemProvider> supplier) {
+        this(AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP), num, regrow, supplier);
     }
 
-    public CropBlock(AbstractBlock.Properties properties, int num, int regrow) {
+    public CropBlock(AbstractBlock.Properties properties, int num, int regrow, Supplier<IItemProvider> supplier) {
         super(init(properties, num));
         this.maxAge = num - 1;
         this.regrow = regrow;
         this.property = temp;
+        this.supplier = supplier;
+    }
+
+    @Nonnull
+    @Override
+    protected IItemProvider getBaseSeedId() {
+        return supplier.get();
     }
 
     private static AbstractBlock.Properties init(AbstractBlock.Properties properties, int num) {

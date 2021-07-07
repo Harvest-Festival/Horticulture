@@ -14,6 +14,7 @@ import uk.joshiejack.horticulture.block.trees.AppleTree;
 import uk.joshiejack.horticulture.block.trees.BananaTree;
 import uk.joshiejack.horticulture.block.trees.OrangeTree;
 import uk.joshiejack.horticulture.block.trees.PeachTree;
+import uk.joshiejack.horticulture.item.HorticultureItems;
 import uk.joshiejack.horticulture.tileentity.NetherStumpTileEntity;
 import uk.joshiejack.horticulture.tileentity.StumpTileEntity;
 
@@ -21,18 +22,18 @@ import uk.joshiejack.horticulture.tileentity.StumpTileEntity;
 @SuppressWarnings("unused")
 public class HorticultureBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Horticulture.MODID);
-    public static final RegistryObject<CropBlock> TURNIPS = BLOCKS.register("turnips", () -> new CropBlock(3));
-    public static final RegistryObject<CropBlock> CUCUMBERS = BLOCKS.register("cucumbers", () -> new CropBlock(4, 2));
-    public static final RegistryObject<CropBlock> STRAWBERRIES = BLOCKS.register("strawberries", () -> new CropBlock(4, 2));
-    public static final RegistryObject<CropBlock> CABBAGES = BLOCKS.register("cabbages", () -> new CropBlock(4));
-    public static final RegistryObject<CropBlock> ONIONS = BLOCKS.register("onions", () -> new CropBlock(3));
-    public static final RegistryObject<CropBlock> TOMATOES = BLOCKS.register("tomatoes", () -> new CropBlock(5, 2));
-    public static final RegistryObject<CropBlock> CORN = BLOCKS.register("corn", () -> new CropBlock(5, 2));
-    public static final RegistryObject<CropBlock> PINEAPPLES = BLOCKS.register("pineapples", () -> new CropBlock(5, 1));
-    public static final RegistryObject<CropBlock> EGGPLANTS = BLOCKS.register("eggplants", () -> new CropBlock(4, 1));
-    public static final RegistryObject<CropBlock> SPINACH = BLOCKS.register("spinach", () -> new CropBlock(3));
-    public static final RegistryObject<CropBlock> SWEET_POTATOES = BLOCKS.register("sweet_potatoes", () -> new CropBlock(3, 0));
-    public static final RegistryObject<CropBlock> GREEN_PEPPERS = BLOCKS.register("green_peppers", () -> new CropBlock(5, 3));
+    public static final RegistryObject<CropBlock> TURNIPS = BLOCKS.register("turnips", () -> new CropBlock(3, HorticultureItems.CUCUMBER_SEEDS::get));
+    public static final RegistryObject<CropBlock> CUCUMBERS = BLOCKS.register("cucumbers", () -> new CropBlock(4, 2, HorticultureItems.CUCUMBER_SEEDS::get));
+    public static final RegistryObject<CropBlock> STRAWBERRIES = BLOCKS.register("strawberries", () -> new CropBlock(4, 2, HorticultureItems.STRAWBERRY_SEEDS::get));
+    public static final RegistryObject<CropBlock> CABBAGES = BLOCKS.register("cabbages", () -> new CropBlock(4, HorticultureItems.CABBAGE_SEEDS::get));
+    public static final RegistryObject<CropBlock> ONIONS = BLOCKS.register("onions", () -> new CropBlock(3, HorticultureItems.ONION_SEEDS::get));
+    public static final RegistryObject<CropBlock> TOMATOES = BLOCKS.register("tomatoes", () -> new CropBlock(5, 2, HorticultureItems.TOMATO_SEEDS::get));
+    public static final RegistryObject<CropBlock> CORN = BLOCKS.register("corn", () -> new CropBlock(5, 2, HorticultureItems.CORN_SEEDS::get));
+    public static final RegistryObject<CropBlock> PINEAPPLES = BLOCKS.register("pineapples", () -> new CropBlock(5, 1, HorticultureItems.PINEAPPLE_SEEDS::get));
+    public static final RegistryObject<CropBlock> EGGPLANTS = BLOCKS.register("eggplants", () -> new CropBlock(4, 1, HorticultureItems.EGGPLANT_SEEDS::get));
+    public static final RegistryObject<CropBlock> SPINACH = BLOCKS.register("spinach", () -> new CropBlock(3, HorticultureItems.SPINACH_SEEDS::get));
+    public static final RegistryObject<CropBlock> SWEET_POTATOES = BLOCKS.register("sweet_potatoes", () -> new CropBlock(3, 0, HorticultureItems.SWEET_POTATO_SEEDS::get));
+    public static final RegistryObject<CropBlock> GREEN_PEPPERS = BLOCKS.register("green_peppers", () -> new CropBlock(5, 3, HorticultureItems.GREEN_PEPPER_SEEDS::get));
     public static final RegistryObject<Block> APPLE_SAPLING = BLOCKS.register("apple_sapling", () -> new SaplingBlock(new AppleTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> BANANA_SAPLING = BLOCKS.register("banana_sapling", () -> new SaplingBlock(new BananaTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> ORANGE_SAPLING = BLOCKS.register("orange_sapling", () -> new SaplingBlock(new OrangeTree(), AbstractBlock.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
