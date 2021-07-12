@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "horticulture:banana_leaves",
+    "horticulture:orange_leaves",
+    "horticulture:peach_leaves",
+    "horticulture:apple_leaves"
+  ]
+}

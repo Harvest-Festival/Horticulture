@@ -37,6 +37,7 @@ public class HorticultureItemTags extends ItemTagsProvider {
         TagsProvider.Builder<Item> cropsTag = tag(Tags.Items.CROPS);
         TagsProvider.Builder<Item> seedsTag = tag(Tags.Items.SEEDS);
         TagsProvider.Builder<Item> saplingsTag = tag(ItemTags.SAPLINGS);
+        TagsProvider.Builder<Item> leavesTag = tag(ItemTags.LEAVES);
         List<Item> items = Lists.newArrayList(HorticultureItems.BANANA, HorticultureItems.CABBAGE,
                 HorticultureItems.CORN, HorticultureItems.CUCUMBER, HorticultureItems.EGGPLANT,
                 HorticultureItems.GREEN_PEPPER, HorticultureItems.ONION, HorticultureItems.ORANGE, HorticultureItems.PEACH,
@@ -58,12 +59,18 @@ public class HorticultureItemTags extends ItemTagsProvider {
 
             if (type.equals("sapling")) {
                 Item sapling = ForgeRegistries.ITEMS.getValue(new ResourceLocation(Horticulture.MODID, item.getRegistryName().getPath() + "_sapling"));
+                Item leaves = ForgeRegistries.ITEMS.getValue(new ResourceLocation(Horticulture.MODID, item.getRegistryName().getPath() + "_leaves"));
                 assert sapling != null;
+                assert leaves != null;
                 saplingsTag.add(sapling);
+                leavesTag.add(leaves);
                 tag(ItemTags.createOptional(new ResourceLocation("forge", "saplings/"
                         + item.getRegistryName().getPath()))).add(sapling);
             }
         });
+
+        saplingsTag.add(HorticultureItems.APPLE_SAPLING.get());
+        leavesTag.add(HorticultureItems.APPLE_LEAVES.get());
     }
 
     private static String type(Item item) {

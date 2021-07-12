@@ -23,6 +23,6 @@ credits="Seed maker sound by le_abbaye_Noirlac on freesound.org"
 [[dependencies.horticulture]]
     modId="penguinlib"
     mandatory=true
-    versionRange="[0.3.0,)"
+    versionRange="[0.4.1,)"
     ordering="NONE"
     side="BOTH"

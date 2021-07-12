@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
+    "horticulture:apple_sapling",
     "horticulture:banana_sapling",
     "horticulture:orange_sapling",
-    "horticulture:peach_sapling",
-    "horticulture:apple_sapling"
+    "horticulture:peach_sapling"
   ]
 }

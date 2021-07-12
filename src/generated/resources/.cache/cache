@@ -269,6 +269,7 @@ e8a8d5a823060381405bb8d03d4b8072f47c93da data/horticulture/advancements/recipes/
 ecf48bcf2fd1d79c2ed96baa80ada6bb91ff6135 data/horticulture/advancements/recipes/horticulture/watering_can.json
 e20df25b04cdeec0e98b44879bfed7bf8e879f6d data/horticulture/advancements/recipes/misc/beetroot_seeds.json
 c5d0f67f4778f566e530340d49ca878885e740b6 data/horticulture/advancements/recipes/misc/wheat_seeds.json
+729d3060712a0a5df7043b3c43c408404cccba69 data/horticulture/database/composter.csv
 e9b9d09b5f1bff2c6e3c82746da7a60012eaebc4 data/horticulture/database/growth_seasons.csv
 7ba00a9aad9f7142bd4255e5e75cbe766b0a5d6b data/horticulture/database/time_unit.csv
 99e54d476fec78ba7629f8a03c275228ff373e51 data/horticulture/database/villager_trades.csv
@@ -367,4 +368,7 @@ ba4a9af3c507eb544de290014dc52465644fe8ff data/horticulture/recipes/tomato_seeds.
 89c24a4e3125709273add6388c85c0dc5fe200da data/horticulture/tags/blocks/sprinkler_growable.json
 73ea83fc145f016f192b51b16434d33dcbbe471b data/horticulture/tags/items/nether_stump.json
 b6cbdeeceb9d8b05b648affc993528b6297d4346 data/horticulture/tags/items/stump.json
-4baa3746193cee80fbad2a7e38efc42723942187 data/minecraft/tags/items/saplings.json
+e41c112f6d812869fde44d6f3ca64ca59404fc94 data/minecraft/tags/blocks/leaves.json
+1ae371cdc010ce7c7ad6199ec05722396d41e205 data/minecraft/tags/blocks/saplings.json
+e7286d3e949e50cf4572ce6eedae3707903502c4 data/minecraft/tags/items/leaves.json
+9c76ddac4cc00b1d51231b7244ca7f171d5c6242 data/minecraft/tags/items/saplings.json

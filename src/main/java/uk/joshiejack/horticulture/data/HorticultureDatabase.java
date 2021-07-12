@@ -53,9 +53,49 @@ public class HorticultureDatabase extends AbstractDatabaseProvider {
         addCropGrowth("summer", HorticultureItems.BANANA_LEAVES);
         addCropGrowth("summer", HorticultureItems.ORANGE_LEAVES);
         addCropGrowth("summer", HorticultureItems.PEACH_LEAVES);
+        addComposting(HorticultureItems.BROWN_MUSHROOM_SPORES, 0.3F);
+        addComposting(HorticultureItems.RED_MUSHROOM_SPORES, 0.3F);
+        addComposting(HorticultureItems.CRIMSON_FUNGUS_SPORES, 0.3F);
+        addComposting(HorticultureItems.WARPED_FUNGUS_SPORES, 0.3F);
+        addComposting(HorticultureItems.APPLE_LEAVES, 0.3F);
+        addComposting(HorticultureItems.BANANA_LEAVES, 0.3F);
+        addComposting(HorticultureItems.ORANGE_LEAVES, 0.3F);
+        addComposting(HorticultureItems.PEACH_LEAVES, 0.3F);
+        addComposting(HorticultureItems.APPLE_SAPLING, 0.3F);
+        addComposting(HorticultureItems.BANANA_SAPLING, 0.3F);
+        addComposting(HorticultureItems.ORANGE_SAPLING, 0.3F);
+        addComposting(HorticultureItems.PEACH_SAPLING, 0.3F);
+        addComposting(HorticultureItems.TURNIP_SEEDS, 0.3F);
+        addComposting(HorticultureItems.CUCUMBER_SEEDS, 0.3F);
+        addComposting(HorticultureItems.STRAWBERRY_SEEDS, 0.3F);
+        addComposting(HorticultureItems.CABBAGE_SEEDS, 0.3F);
+        addComposting(HorticultureItems.ONION_SEEDS, 0.3F);
+        addComposting(HorticultureItems.TOMATO_SEEDS, 0.3F);
+        addComposting(HorticultureItems.CORN_SEEDS, 0.3F);
+        addComposting(HorticultureItems.PINEAPPLE_SEEDS, 0.3F);
+        addComposting(HorticultureItems.EGGPLANT_SEEDS, 0.3F);
+        addComposting(HorticultureItems.SPINACH_SEEDS, 0.3F);
+        addComposting(HorticultureItems.SWEET_POTATO_SEEDS, 0.3F);
+        addComposting(HorticultureItems.GREEN_PEPPER_SEEDS, 0.3F);
+        addComposting(HorticultureItems.TURNIP, 0.65F);
+        addComposting(HorticultureItems.CUCUMBER, 0.65F);
+        addComposting(HorticultureItems.STRAWBERRY, 0.65F);
+        addComposting(HorticultureItems.CABBAGE, 0.65F);
+        addComposting(HorticultureItems.ONION, 0.65F);
+        addComposting(HorticultureItems.TOMATO, 0.65F);
+        addComposting(HorticultureItems.CORN, 0.65F);
+        addComposting(HorticultureItems.PINEAPPLE, 0.65F);
+        addComposting(HorticultureItems.EGGPLANT, 0.65F);
+        addComposting(HorticultureItems.SPINACH, 0.65F);
+        addComposting(HorticultureItems.SWEET_POTATO, 0.65F);
+        addComposting(HorticultureItems.GREEN_PEPPER, 0.65F);
     }
 
     private void addCropGrowth(String predicate, RegistryObject<? extends Item> block) {
         addEntry("growth_seasons", "Item/Block,Season Predicate", CSVUtils.join(Objects.requireNonNull(block.get().getRegistryName()).toString(), predicate));
+    }
+
+    private void addComposting(RegistryObject<? extends Item> item, float compostAmount) {
+        addEntry("composter", "Item,Compost Amount", CSVUtils.join(Objects.requireNonNull(item.get().getRegistryName()).toString(), compostAmount));
     }
 }
