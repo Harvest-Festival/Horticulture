@@ -1,18 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "stumps",
+  "key": {
+    "L": {
+      "tag": "forge:mushrooms"
+    },
+    "M": {
+      "item": "minecraft:acacia_log"
+    }
+  },
   "pattern": [
     "L",
     "M"
   ],
-  "key": {
-    "M": {
-      "item": "minecraft:acacia_log"
-    },
-    "L": {
-      "tag": "forge:mushrooms"
-    }
-  },
   "result": {
     "item": "horticulture:acacia_stump"
   }

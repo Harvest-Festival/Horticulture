@@ -1,18 +1,26 @@
 package uk.joshiejack.horticulture.data;
 
-import net.minecraft.data.DataGenerator;
-import net.minecraftforge.common.data.LanguageProvider;
+import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.data.LanguageProvider;
+import net.neoforged.neoforge.registries.DeferredBlock;
 import uk.joshiejack.horticulture.Horticulture;
-import uk.joshiejack.horticulture.item.HorticultureItems;
+import uk.joshiejack.horticulture.world.block.HorticultureBlocks;
+import uk.joshiejack.horticulture.world.item.HorticultureItems;
 
 public class HorticultureLanguage extends LanguageProvider {
-    public HorticultureLanguage(DataGenerator gen) {
+    public HorticultureLanguage(PackOutput gen) {
         super(gen, Horticulture.MODID, "en_us");
+    }
+
+    protected void addItem(DeferredBlock<Block> block, String text) {
+        addItem(block::asItem, text);
     }
 
     @Override
     protected void addTranslations() {
         add("itemGroup.horticulture", "Horticulture");
+
         addItem(HorticultureItems.TURNIP, "Turnip");
         addItem(HorticultureItems.CUCUMBER, "Cucumber");
         addItem(HorticultureItems.STRAWBERRY, "Strawberry");
@@ -45,10 +53,10 @@ public class HorticultureLanguage extends LanguageProvider {
         addItem(HorticultureItems.SPINACH_SEEDS, "Spinach Seeds");
         addItem(HorticultureItems.SWEET_POTATO_SEEDS, "Sweet Potato Slips");
         addItem(HorticultureItems.GREEN_PEPPER_SEEDS, "Green Pepper Seeds");
-        addItem(HorticultureItems.APPLE_SAPLING, "Apple Sapling");
-        addItem(HorticultureItems.BANANA_SAPLING, "Banana Sapling");
-        addItem(HorticultureItems.ORANGE_SAPLING, "Orange Sapling");
-        addItem(HorticultureItems.PEACH_SAPLING, "Peach Sapling");
+        addItem(HorticultureBlocks.APPLE_SAPLING, "Apple Sapling");
+        addItem(HorticultureBlocks.BANANA_SAPLING, "Banana Sapling");
+        addItem(HorticultureBlocks.ORANGE_SAPLING, "Orange Sapling");
+        addItem(HorticultureBlocks.PEACH_SAPLING, "Peach Sapling");
         addItem(HorticultureItems.CORNFLAKES, "Cornflakes");
         addItem(HorticultureItems.HAPPY_EGGPLANT, "Happy Eggplant");
         addItem(HorticultureItems.BAKED_CORN, "Baked Corn");
@@ -66,24 +74,26 @@ public class HorticultureLanguage extends LanguageProvider {
         addItem(HorticultureItems.BANANA_JUICE, "Banana Juice");
         addItem(HorticultureItems.ORANGE_JUICE, "Orange Juice");
         addItem(HorticultureItems.APPLE_JUICE, "Apple Juice");
-        addItem(HorticultureItems.BANANA_LEAVES, "Banana Tree Leaves");
-        addItem(HorticultureItems.ORANGE_LEAVES, "Orange Tree Leaves");
-        addItem(HorticultureItems.APPLE_LEAVES, "Apple Tree Leaves");
-        addItem(HorticultureItems.PEACH_LEAVES, "Peach Tree Leaves");
-        addItem(HorticultureItems.BANANA_FRUIT, "Banana Tree Fruit");
-        addItem(HorticultureItems.ORANGE_FRUIT, "Orange Tree Fruit");
-        addItem(HorticultureItems.APPLE_FRUIT, "Apple Tree Fruit");
-        addItem(HorticultureItems.PEACH_FRUIT, "Peach Tree Fruit");
-        addItem(HorticultureItems.SEED_MAKER, "Seed Maker");
-        addItem(HorticultureItems.OLD_SPRINKLER, "Old Sprinkler");
-        addItem(HorticultureItems.IRON_SPRINKLER, "Iron Sprinkler");
-        addItem(HorticultureItems.OAK_STUMP, "Oak Mushroom Stump");
-        addItem(HorticultureItems.SPRUCE_STUMP, "Spruce Mushroom Stump");
-        addItem(HorticultureItems.BIRCH_STUMP, "Birch Mushroom Stump");
-        addItem(HorticultureItems.JUNGLE_STUMP, "Jungle Mushroom Stump");
-        addItem(HorticultureItems.ACACIA_STUMP, "Acacia Mushroom Stump");
-        addItem(HorticultureItems.DARK_OAK_STUMP, "Dark Oak Mushroom Stump");
-        addItem(HorticultureItems.CRIMSON_STUMP, "Crimson Fungus Stump");
-        addItem(HorticultureItems.WARPED_STUMP, "Warped Fungus Stump");
+        addItem(HorticultureBlocks.BANANA_LEAVES, "Banana Tree Leaves");
+        addItem(HorticultureBlocks.ORANGE_LEAVES, "Orange Tree Leaves");
+        addItem(HorticultureBlocks.APPLE_LEAVES, "Apple Tree Leaves");
+        addItem(HorticultureBlocks.PEACH_LEAVES, "Peach Tree Leaves");
+        addItem(HorticultureBlocks.BANANA_FRUIT, "Banana Tree Fruit");
+        addItem(HorticultureBlocks.ORANGE_FRUIT, "Orange Tree Fruit");
+        addItem(HorticultureBlocks.APPLE_FRUIT, "Apple Tree Fruit");
+        addItem(HorticultureBlocks.PEACH_FRUIT, "Peach Tree Fruit");
+        addItem(HorticultureBlocks.SEED_MAKER, "Seed Maker");
+        addItem(HorticultureBlocks.OLD_SPRINKLER, "Old Sprinkler");
+        addItem(HorticultureBlocks.IRON_SPRINKLER, "Iron Sprinkler");
+        addItem(HorticultureBlocks.OAK_STUMP, "Oak Mushroom Stump");
+        addItem(HorticultureBlocks.SPRUCE_STUMP, "Spruce Mushroom Stump");
+        addItem(HorticultureBlocks.BIRCH_STUMP, "Birch Mushroom Stump");
+        addItem(HorticultureBlocks.JUNGLE_STUMP, "Jungle Mushroom Stump");
+        addItem(HorticultureBlocks.ACACIA_STUMP, "Acacia Mushroom Stump");
+        addItem(HorticultureBlocks.DARK_OAK_STUMP, "Dark Oak Mushroom Stump");
+        addItem(HorticultureBlocks.CRIMSON_STUMP, "Crimson Fungus Stump");
+        addItem(HorticultureBlocks.WARPED_STUMP, "Warped Fungus Stump");
+        addItem(HorticultureBlocks.CHERRY_STUMP, "Cherry Mushroom Stump");
+        addItem(HorticultureBlocks.MANGROVE_STUMP, "Mangrove Mushroom Stump");
     }
 }

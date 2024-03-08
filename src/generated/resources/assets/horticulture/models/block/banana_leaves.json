@@ -1,6 +1,4 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "horticulture:block/leaves/banana"
-  }
+  "parent": "minecraft:block/oak_leaves",
+  "render_type": "minecraft:cutout_mipped"
 }

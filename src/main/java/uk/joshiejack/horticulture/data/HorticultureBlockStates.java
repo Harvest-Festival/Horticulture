@@ -1,25 +1,22 @@
 package uk.joshiejack.horticulture.data;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.CropsBlock;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.generators.BlockStateProvider;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import uk.joshiejack.horticulture.Horticulture;
-import uk.joshiejack.horticulture.block.FruitBlock;
-import uk.joshiejack.horticulture.block.FruitTreeLeavesBlock;
-import uk.joshiejack.horticulture.block.HorticultureBlocks;
-import uk.joshiejack.horticulture.block.SeedMakerBlock;
+import uk.joshiejack.horticulture.world.block.*;
 
 @SuppressWarnings("ConstantConditions")
 public class HorticultureBlockStates extends BlockStateProvider {
-    public HorticultureBlockStates(DataGenerator gen, ExistingFileHelper exFileHelper) {
-        super(gen, Horticulture.MODID, exFileHelper);
+    public HorticultureBlockStates(PackOutput output, ExistingFileHelper existingFileHelper) {
+        super(output, Horticulture.MODID, existingFileHelper);
     }
 
     @Override
@@ -54,11 +51,13 @@ public class HorticultureBlockStates extends BlockStateProvider {
         mushroomLogs(HorticultureBlocks.DARK_OAK_STUMP.get());
         mushroomLogs(HorticultureBlocks.CRIMSON_STUMP.get());
         mushroomLogs(HorticultureBlocks.WARPED_STUMP.get());
+        mushroomLogs(HorticultureBlocks.CHERRY_STUMP.get());
+        mushroomLogs(HorticultureBlocks.MANGROVE_STUMP.get());
         leaves(HorticultureBlocks.PEACH_LEAVES.get());
         leaves(HorticultureBlocks.ORANGE_LEAVES.get());
         leaves(HorticultureBlocks.APPLE_LEAVES.get());
         leaves(HorticultureBlocks.BANANA_LEAVES.get());
-        ModelFile file = models().getExistingFile(HorticultureBlocks.SEED_MAKER.get().getRegistryName());
+        ModelFile file = models().getExistingFile(HorticultureBlocks.SEED_MAKER.getId());
         VariantBlockStateBuilder builder = getVariantBuilder(HorticultureBlocks.SEED_MAKER.get());
         builder.partialState().with(SeedMakerBlock.FACING, Direction.EAST).modelForState().modelFile(file).rotationY(90).addModel();
         builder.partialState().with(SeedMakerBlock.FACING, Direction.WEST).modelForState().modelFile(file).rotationY(270).addModel();
@@ -68,36 +67,36 @@ public class HorticultureBlockStates extends BlockStateProvider {
 
     protected void leaves(Block block) {
         getMultipartBuilder(block)
-                .part().modelFile(itemModels().getExistingFile(new ResourceLocation("minecraft", "oak_leaves"))).addModel().end()
+                .part().modelFile(models().withExistingParent(BuiltInRegistries.BLOCK.getKey(block).getPath(), new ResourceLocation("minecraft", "oak_leaves")).renderType("cutout_mipped")).addModel().end()
                 .part().modelFile(models()
-                .cubeAll(block.getRegistryName().getPath(), new ResourceLocation(block.getRegistryName().getNamespace(),
-                        "block/leaves/" + block.getRegistryName().getPath().replace("_leaves", "")))).addModel().condition(FruitTreeLeavesBlock.IN_SEASON, true);
+                .cubeAll(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_in_season", new ResourceLocation(BuiltInRegistries.BLOCK.getKey(block).getNamespace(),
+                        "block/leaves/" + BuiltInRegistries.BLOCK.getKey(block).getPath().replace("_leaves", "")))).addModel().condition(AbstractFruitTreeLeavesBlock.IN_SEASON, true);
     }
 
     protected void mushroomLogs(Block block) {
-        String log = block.getRegistryName().getPath().replace("_stump", "");
+        String log = BuiltInRegistries.BLOCK.getKey(block).getPath().replace("_stump", "");
         String type = log.equals("crimson") || log.equals("warped") ? "_stem" : "_log";
-        ModelFile file = models().withExistingParent(block.getRegistryName().getPath(), new ResourceLocation(Horticulture.MODID, "mushroom_log"))
+        ModelFile file = models().withExistingParent(BuiltInRegistries.BLOCK.getKey(block).getPath(), new ResourceLocation(Horticulture.MODID, "mushroom_log"))
                 .texture("side", new ResourceLocation("minecraft", "block/" + log + type)).texture("top", new ResourceLocation("block/" + log + type + "_top"));
         getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(file).build());
     }
 
     protected void model(Block block) {
-        ModelFile file = models().getExistingFile(block.getRegistryName());
+        ModelFile file = models().getExistingFile(BuiltInRegistries.BLOCK.getKey(block));
         getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(file).build());
     }
 
     protected void buildSaplings(Block block) {
-        ModelFile file = models().cross(block.getRegistryName().toString(),
-                new ResourceLocation(block.getRegistryName().getNamespace(), "block/saplings/" + block.getRegistryName().getPath().replace("_sapling", "")));
+        ModelFile file = models().cross(BuiltInRegistries.BLOCK.getKey(block).toString(),
+                new ResourceLocation(BuiltInRegistries.BLOCK.getKey(block).getNamespace(), "block/saplings/" + BuiltInRegistries.BLOCK.getKey(block).getPath().replace("_sapling", "")));
         getVariantBuilder(block).forAllStates(state -> ConfiguredModel.builder().modelFile(file).build());
     }
 
-    protected void buildCrops(CropsBlock block) {
+    protected void buildCrops(CropBlock block) {
         VariantBlockStateBuilder builder = getVariantBuilder(block);
         for (int i = 0; i <= block.getMaxAge(); i++) {
-            ModelFile file = models().crop(block.getRegistryName().getPath() + "_" + (i + 1),
-                    new ResourceLocation(Horticulture.MODID, "block/crops/" + block.getRegistryName().getPath() + "_" + (i + 1)));
+            ModelFile file = models().crop(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i + 1),
+                    new ResourceLocation(Horticulture.MODID, "block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i + 1)));
             builder.partialState().with(block.getAgeProperty(), i).modelForState().modelFile(file).addModel();
         }
     }
@@ -105,8 +104,8 @@ public class HorticultureBlockStates extends BlockStateProvider {
     protected void buildFruits(Block block) {
         VariantBlockStateBuilder builder = getVariantBuilder(block);
         for (int i = 0; i <= 3; i++) {
-            ModelFile file = models().cross(block.getRegistryName().getPath() + "_" + (i + 1),
-                    new ResourceLocation(Horticulture.MODID, "block/crops/" + block.getRegistryName().getPath() + "_" + i));
+            ModelFile file = models().cross(BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + (i + 1),
+                    new ResourceLocation(Horticulture.MODID, "block/crops/" + BuiltInRegistries.BLOCK.getKey(block).getPath() + "_" + i));
             builder.partialState().with(FruitBlock.AGE, i).modelForState().modelFile(file).addModel();
         }
     }

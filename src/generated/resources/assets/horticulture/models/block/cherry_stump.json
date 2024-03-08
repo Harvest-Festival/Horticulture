@@ -1,0 +1,7 @@
+{
+  "parent": "horticulture:block/mushroom_log",
+  "textures": {
+    "side": "minecraft:block/cherry_log",
+    "top": "minecraft:block/cherry_log_top"
+  }
+}

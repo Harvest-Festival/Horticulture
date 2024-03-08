@@ -1,18 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bone_meal"
+    },
+    "L": {
+      "tag": "minecraft:planks"
+    }
+  },
   "pattern": [
     " L ",
     "LBL",
     " L "
   ],
-  "key": {
-    "L": {
-      "tag": "minecraft:planks"
-    },
-    "B": {
-      "item": "minecraft:bone_meal"
-    }
-  },
   "result": {
     "item": "horticulture:old_sprinkler"
   }

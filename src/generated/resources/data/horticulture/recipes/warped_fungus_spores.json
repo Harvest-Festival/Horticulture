@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "minecraft:warped_fungus"
   },
-  "result": "horticulture:warped_fungus_spores",
-  "count": 1
+  "result": {
+    "item": "horticulture:warped_fungus_spores"
+  }
 }

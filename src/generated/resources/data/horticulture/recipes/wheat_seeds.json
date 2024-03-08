@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "minecraft:wheat"
   },
-  "result": "minecraft:wheat_seeds",
-  "count": 1
+  "result": {
+    "item": "minecraft:wheat_seeds"
+  }
 }

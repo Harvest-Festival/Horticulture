@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "minecraft:crimson_fungus"
   },
-  "result": "horticulture:crimson_fungus_spores",
-  "count": 1
+  "result": {
+    "item": "horticulture:crimson_fungus_spores"
+  }
 }

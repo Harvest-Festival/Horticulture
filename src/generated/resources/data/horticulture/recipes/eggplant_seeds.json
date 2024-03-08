@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:eggplant"
   },
-  "result": "horticulture:eggplant_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:eggplant_seeds"
+  }
 }

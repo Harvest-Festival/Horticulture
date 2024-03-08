@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:tomato"
   },
-  "result": "horticulture:tomato_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:tomato_seeds"
+  }
 }

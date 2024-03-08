@@ -2,28 +2,31 @@
   "type": "minecraft:chest",
   "pools": [
     {
-      "rolls": {
-        "min": 3.0,
-        "max": 8.0,
-        "type": "minecraft:uniform"
-      },
+      "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
-          "weight": 10,
           "functions": [
             {
-              "function": "minecraft:set_count",
+              "add": false,
               "count": {
-                "min": 2.0,
+                "type": "minecraft:uniform",
                 "max": 4.0,
-                "type": "minecraft:uniform"
-              }
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
             }
           ],
-          "name": "horticulture:sweet_potato_seeds"
+          "name": "horticulture:sweet_potato_seeds",
+          "weight": 10
         }
-      ]
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 8.0,
+        "min": 3.0
+      }
     }
-  ]
+  ],
+  "random_sequence": "horticulture:chests/village/village_snowy_house"
 }

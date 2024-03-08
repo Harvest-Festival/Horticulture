@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:spinach"
   },
-  "result": "horticulture:spinach_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:spinach_seeds"
+  }
 }

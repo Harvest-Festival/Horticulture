@@ -1,28 +1,30 @@
 {
   "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
   "pools": [
     {
-      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "horticulture:orange_fruit",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "3"
+          }
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
           "name": "horticulture:orange"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:block_state_property",
-          "block": "horticulture:orange_fruit",
-          "properties": {
-            "age": "3"
-          }
-        }
-      ]
+      "rolls": 1.0
     }
   ],
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
-  ]
+  "random_sequence": "horticulture:blocks/orange_fruit"
 }

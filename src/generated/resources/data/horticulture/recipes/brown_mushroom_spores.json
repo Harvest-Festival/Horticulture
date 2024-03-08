@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "minecraft:brown_mushroom"
   },
-  "result": "horticulture:brown_mushroom_spores",
-  "count": 1
+  "result": {
+    "item": "horticulture:brown_mushroom_spores"
+  }
 }

@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:pineapple"
   },
-  "result": "horticulture:pineapple_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:pineapple_seeds"
+  }
 }

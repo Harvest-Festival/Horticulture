@@ -1,24 +1,27 @@
 package uk.joshiejack.horticulture.data;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.data.BlockTagsProvider;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import uk.joshiejack.horticulture.Horticulture;
-import uk.joshiejack.horticulture.block.HorticultureBlocks;
-import uk.joshiejack.horticulture.tileentity.AbstractSprinklerTileEntity;
+import uk.joshiejack.horticulture.world.block.HorticultureBlocks;
+import uk.joshiejack.horticulture.world.block.entity.AbstractSprinklerBlockEntity;
 
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
 public class HorticultureBlockTags extends BlockTagsProvider {
-    public HorticultureBlockTags(DataGenerator generator, @Nullable ExistingFileHelper existingFileHelper) {
-        super(generator, Horticulture.MODID, existingFileHelper);
+    public HorticultureBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, Horticulture.MODID, existingFileHelper);
     }
 
     @Override
-    protected void addTags() {
-        tag(AbstractSprinklerTileEntity.SPRINKLER_GROWABLE).add(Blocks.SWEET_BERRY_BUSH);
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
+        tag(AbstractSprinklerBlockEntity.SPRINKLER_GROWABLE).add(Blocks.SWEET_BERRY_BUSH);
         tag(BlockTags.LEAVES).add(HorticultureBlocks.APPLE_LEAVES.get(), HorticultureBlocks.BANANA_LEAVES.get(),
                 HorticultureBlocks.ORANGE_LEAVES.get(), HorticultureBlocks.PEACH_LEAVES.get());
         tag(BlockTags.SAPLINGS).add(HorticultureBlocks.APPLE_SAPLING.get(), HorticultureBlocks.BANANA_SAPLING.get(),

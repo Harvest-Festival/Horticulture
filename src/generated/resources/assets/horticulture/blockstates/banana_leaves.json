@@ -2,15 +2,15 @@
   "multipart": [
     {
       "apply": {
-        "model": "minecraft:item/oak_leaves"
+        "model": "horticulture:block/banana_leaves"
       }
     },
     {
+      "apply": {
+        "model": "horticulture:block/banana_leaves_in_season"
+      },
       "when": {
         "in_season": "true"
-      },
-      "apply": {
-        "model": "horticulture:block/banana_leaves"
       }
     }
   ]

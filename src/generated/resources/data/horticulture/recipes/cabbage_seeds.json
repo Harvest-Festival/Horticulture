@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:cabbage"
   },
-  "result": "horticulture:cabbage_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:cabbage_seeds"
+  }
 }

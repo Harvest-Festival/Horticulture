@@ -1,9 +1,10 @@
 {
   "type": "horticulture:nether_stump",
+  "growths": 25,
   "ingredient": {
     "item": "horticulture:warped_fungus_spores"
   },
-  "result": "minecraft:warped_fungus",
-  "count": 1,
-  "max growths": 25
+  "result": {
+    "item": "minecraft:warped_fungus"
+  }
 }

@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:corn"
   },
-  "result": "horticulture:corn_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:corn_seeds"
+  }
 }

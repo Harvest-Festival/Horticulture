@@ -1,18 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "stumps",
+  "key": {
+    "L": {
+      "tag": "forge:mushrooms"
+    },
+    "M": {
+      "item": "minecraft:dark_oak_log"
+    }
+  },
   "pattern": [
     "L",
     "M"
   ],
-  "key": {
-    "M": {
-      "item": "minecraft:dark_oak_log"
-    },
-    "L": {
-      "tag": "forge:mushrooms"
-    }
-  },
   "result": {
     "item": "horticulture:dark_oak_stump"
   }

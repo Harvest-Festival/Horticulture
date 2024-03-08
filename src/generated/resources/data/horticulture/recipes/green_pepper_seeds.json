@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:green_pepper"
   },
-  "result": "horticulture:green_pepper_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:green_pepper_seeds"
+  }
 }

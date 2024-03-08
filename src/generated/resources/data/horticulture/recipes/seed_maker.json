@@ -1,24 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "tag": "forge:crops"
+    },
+    "F": {
+      "item": "minecraft:composter"
+    },
+    "R": {
+      "tag": "forge:dusts/redstone"
+    },
+    "W": {
+      "tag": "minecraft:planks"
+    }
+  },
   "pattern": [
     "WCW",
     "WRW",
     "WFW"
   ],
-  "key": {
-    "W": {
-      "tag": "minecraft:planks"
-    },
-    "R": {
-      "tag": "forge:dusts/redstone"
-    },
-    "F": {
-      "item": "minecraft:composter"
-    },
-    "C": {
-      "tag": "forge:crops"
-    }
-  },
   "result": {
     "item": "horticulture:seed_maker"
   }

@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:cucumber"
   },
-  "result": "horticulture:cucumber_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:cucumber_seeds"
+  }
 }

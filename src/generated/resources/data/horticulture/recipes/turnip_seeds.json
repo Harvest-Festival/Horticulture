@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:turnip"
   },
-  "result": "horticulture:turnip_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:turnip_seeds"
+  }
 }

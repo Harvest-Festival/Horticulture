@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:onion"
   },
-  "result": "horticulture:onion_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:onion_seeds"
+  }
 }

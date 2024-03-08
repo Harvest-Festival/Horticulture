@@ -1,49 +1,52 @@
 {
   "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
   "pools": [
     {
-      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "horticulture:cucumbers",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "3"
+          }
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
           "name": "horticulture:cucumber"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:block_state_property",
-          "block": "horticulture:cucumbers",
-          "properties": {
-            "age": "3"
-          }
-        }
-      ]
+      "rolls": 1.0
     },
     {
-      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "block": "horticulture:cucumbers",
+            "condition": "minecraft:block_state_property",
+            "properties": {
+              "age": "3"
+            }
+          }
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
           "name": "horticulture:cucumber_seeds"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:inverted",
-          "term": {
-            "condition": "minecraft:block_state_property",
-            "block": "horticulture:cucumbers",
-            "properties": {
-              "age": "3"
-            }
-          }
-        }
-      ]
+      "rolls": 1.0
     }
   ],
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
-  ]
+  "random_sequence": "horticulture:blocks/cucumbers"
 }

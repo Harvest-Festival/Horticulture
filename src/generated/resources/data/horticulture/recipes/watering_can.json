@@ -1,18 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "B": {
+      "item": "minecraft:bucket"
+    },
+    "S": {
+      "tag": "forge:stone"
+    }
+  },
   "pattern": [
     "S  ",
     "SBS",
     " S "
   ],
-  "key": {
-    "S": {
-      "tag": "forge:stone"
-    },
-    "B": {
-      "item": "minecraft:bucket"
-    }
-  },
   "result": {
     "item": "horticulture:watering_can"
   }

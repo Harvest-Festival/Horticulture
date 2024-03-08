@@ -1,0 +1,52 @@
+{
+  "type": "minecraft:tree",
+  "config": {
+    "decorators": [],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
+    },
+    "foliage_placer": {
+      "type": "horticulture:banana_tree",
+      "offset": 0,
+      "radius": 2
+    },
+    "foliage_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "horticulture:orange_leaves",
+        "Properties": {
+          "distance": "4",
+          "in_season": "true",
+          "persistent": "false",
+          "waterlogged": "true"
+        }
+      }
+    },
+    "force_dirt": false,
+    "ignore_vines": true,
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 1,
+      "lower_size": 0,
+      "upper_size": 1
+    },
+    "trunk_placer": {
+      "type": "horticulture:orange_tree",
+      "base_height": 5,
+      "height_rand_a": 4,
+      "height_rand_b": 0
+    },
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:oak_log",
+        "Properties": {
+          "axis": "y"
+        }
+      }
+    }
+  }
+}

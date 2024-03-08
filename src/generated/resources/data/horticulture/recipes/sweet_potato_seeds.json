@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:sweet_potato"
   },
-  "result": "horticulture:sweet_potato_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:sweet_potato_seeds"
+  }
 }

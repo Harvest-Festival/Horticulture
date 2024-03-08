@@ -1,18 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "stumps",
+  "key": {
+    "L": {
+      "tag": "forge:fungi"
+    },
+    "M": {
+      "item": "minecraft:warped_stem"
+    }
+  },
   "pattern": [
     "L",
     "M"
   ],
-  "key": {
-    "M": {
-      "item": "minecraft:warped_stem"
-    },
-    "L": {
-      "tag": "forge:fungi"
-    }
-  },
   "result": {
     "item": "horticulture:warped_stump"
   }

@@ -3,6 +3,7 @@
   "ingredient": {
     "item": "horticulture:strawberry"
   },
-  "result": "horticulture:strawberry_seeds",
-  "count": 1
+  "result": {
+    "item": "horticulture:strawberry_seeds"
+  }
 }

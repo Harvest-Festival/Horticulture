@@ -1,36 +1,9 @@
-buildscript {
-    repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
-    }
-}
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'maven'
-apply plugin: 'eclipse'
-apply plugin: 'maven-publish'
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-    maven { // Vanilla
-        name 'Vanilla'
-        url 'https://libraries.minecraft.net/'
-    }
-    maven { // Forge
-        name 'ForgeFS'
-        url 'https://maven.minecraftforge.net/'
-    }
-    maven { // JEI
-        name 'DVS1 Maven FS'
-        url 'https://dvs1.progwml6.com/files/maven'
-    }
-    maven { //PenguinLib
-        name 'Joshiejack'
-        url 'https://maven.joshiejack.uk/'
-    }
+plugins {
+    id 'java-library'
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.neoforged.gradle.userdev' version '7.0.57'
 }
 
 ext.build_number=""
@@ -39,104 +12,97 @@ if (System.getenv().BUILD_NUMBER) {
 }
 
 version = "${minecraft_version}-${mod_version}${build_number}"
-group = 'uk.joshiejack.horticulture' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'Horticulture'
+group = mod_group_id
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
-
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-minecraft {
-    mappings channel: 'official', version: '1.16.5'
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-    runs {
-        client {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
-            mods {
-                horticulture {
-                    source sourceSets.main
-                }
-            }
+repositories {
+    mavenLocal()
+    maven {
+        // Jared's Maven (JEI)
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        // saps.dev Maven (KubeJS and Rhino)
+        url = "https://maven.saps.dev/releases"
+        content {
+            includeGroup "dev.latvian.mods"
         }
+    }
+}
 
-        server {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+base {
+    archivesName = 'mod_id'
+}
 
-            mods {
-                horticulture {
-                    source sourceSets.main
-                }
-            }
-        }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-        data {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+runs {
+    configureEach {
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
+        systemProperty 'forge.logging.console.level', 'debug'
 
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'horticulture', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+        modSource project.sourceSets.main
+    }
 
-            mods {
-                horticulture {
-                    source sourceSets.main
-                }
-            }
-        }
+    client {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+    }
+
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        programArgument '--nogui'
+    }
+
+    gameTestServer {
+        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+    }
+
+    data {
+        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.1.16'
-    compile fg.deobf("uk.joshiejack.penguinlib:Penguin-Lib:${minecraft_version}-${penguinlib_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${jei_version}:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-${jei_version}")
+    implementation "net.neoforged:neoforge:${neo_version}"
+    implementation "uk.joshiejack.penguinlib:Penguin-Lib:${minecraft_version}-${penguinlib_version}"
+    compileOnly("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 }
 
-jar {
-    manifest {
-        attributes([
-            "Specification-Title": "Horticulture",
-            "Specification-Vendor": "joshiejack",
-            "Specification-Version": "1", // We are version 1 of ourselves
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"joshiejack",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
+            neo_version         : neo_version, neo_version_range: neo_version_range,
+            penguinlib_version  : penguinlib_version, penguinlib_version_range: penguinlib_version_range,
+            loader_version_range: loader_version_range,
+            mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors         : mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml']) {
+        expand replaceProperties + [project: project]
     }
 }
-
-jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-//publish.dependsOn('reobfJar')
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
-            artifactId 'Horticulture'
-            artifact jar
+        register('mavenJava', MavenPublication) {
+            from components.java
         }
     }
     repositories {
-      if (project.hasProperty('mavenRepository')) {
-          maven { url mavenRepository }
-      } else {
-          mavenLocal()
-      }
+        if (project.hasProperty('mavenRepository')) {
+            maven { url mavenRepository }
+        } else {
+            mavenLocal()
+        }
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }

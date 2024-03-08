@@ -1,0 +1,36 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "horticulture:block/leaves/apple_fast_empty"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "horticulture:block/leaves/orange_fast_empty"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "horticulture:block/leaves/peach_fast_empty"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "horticulture:block/leaves/banana_fast_empty"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "horticulture:block/leaves/apple_fast_flowering"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "horticulture:block/leaves/orange_fast_flowering"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "horticulture:block/leaves/peach_fast_flowering"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "horticulture:block/leaves/banana_fast_flowering"
+    }
+  ]
+}

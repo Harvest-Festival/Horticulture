@@ -1,49 +1,52 @@
 {
   "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
   "pools": [
     {
-      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "horticulture:turnips",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "2"
+          }
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
           "name": "horticulture:turnip"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:block_state_property",
-          "block": "horticulture:turnips",
-          "properties": {
-            "age": "2"
-          }
-        }
-      ]
+      "rolls": 1.0
     },
     {
-      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "block": "horticulture:turnips",
+            "condition": "minecraft:block_state_property",
+            "properties": {
+              "age": "2"
+            }
+          }
+        }
+      ],
       "entries": [
         {
           "type": "minecraft:item",
           "name": "horticulture:turnip_seeds"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:inverted",
-          "term": {
-            "condition": "minecraft:block_state_property",
-            "block": "horticulture:turnips",
-            "properties": {
-              "age": "2"
-            }
-          }
-        }
-      ]
+      "rolls": 1.0
     }
   ],
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
-  ]
+  "random_sequence": "horticulture:blocks/turnips"
 }

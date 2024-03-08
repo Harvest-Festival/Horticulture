@@ -1,18 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bone_meal"
+    },
+    "L": {
+      "tag": "forge:ingots/iron"
+    }
+  },
   "pattern": [
     " L ",
     "LBL",
     " L "
   ],
-  "key": {
-    "L": {
-      "tag": "forge:ingots/iron"
-    },
-    "B": {
-      "item": "minecraft:bone_meal"
-    }
-  },
   "result": {
     "item": "horticulture:iron_sprinkler"
   }

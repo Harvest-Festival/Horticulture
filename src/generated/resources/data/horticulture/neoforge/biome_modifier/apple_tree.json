@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_forest",
+  "features": "horticulture:apple_tree",
+  "step": "vegetal_decoration"
+}
