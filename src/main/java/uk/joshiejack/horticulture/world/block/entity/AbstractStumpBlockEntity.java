@@ -101,7 +101,7 @@ public abstract class AbstractStumpBlockEntity<I extends AbstractStumpRecipe<I>>
         super.setChanged();
         assert level != null;
         if (!level.isClientSide)
-            PenguinNetwork.sendToNearby(new StumpUpdatePacket(worldPosition, items.get(0).getItem(), getBlockState().getValue(AbstractStumpBlock.AGE)), this);
+            PenguinNetwork.sendToNearby(this, new StumpUpdatePacket(worldPosition, items.get(0).getItem(), getBlockState().getValue(AbstractStumpBlock.AGE)));
     }
 
     @Override
