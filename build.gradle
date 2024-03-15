@@ -91,6 +91,7 @@ tasks.withType(ProcessResources).configureEach {
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
+            artifactId = mod_name.replace(" ", "-")
             from components.java
         }
     }
